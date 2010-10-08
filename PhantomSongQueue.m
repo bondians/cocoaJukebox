@@ -10,8 +10,9 @@
 #import "DBSong.h"
 #import "DBMusicPlayer.h"
 
-#define stoppedUrl			@"http://localhost:3000/jukebox_internal/stopped_playing"
-#define nextSongUrl			@"http://localhost:3000/nextsongs.txt"
+#define defaultUrl			[[NSUserDefaults standardUserDefaults] stringForKey:@"kUrlRoot"]
+#define stoppedUrl			[NSString stringWithFormat: @"%@/stopped_playing", defaultUrl]
+#define nextSongUrl			[NSString stringWithFormat: @"%@/nextsongs.txt", defaultUrl]
 #define songUrlEncoding		NSUTF8StringEncoding
 
 #define notificationCenter [NSNotificationCenter defaultCenter]

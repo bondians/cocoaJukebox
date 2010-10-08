@@ -15,16 +15,17 @@
 	
 	// advanced preferences
 	
-	//[appDefaults setValue: @"/Volumes" forKey: @"kPathToArchive"];
-	//[appDefaults setValue: @"YES"       forKey: @"kFadeIsOn"];
-	//[appDefaults setValue: @"6.0"       forKey: @"kDefaultFadeDuration"];
-	//[appDefaults setValue: @"NO"       forKey: @"kRespectIndividualFadeDurations"];
-	//[appDefaults setValue: @"NO"       forKey: @"kRespectSongHinting"];
-	//[appDefaults setValue: @"NO"       forKey: @"kRespectSongFadeIn"];
-	//[appDefaults setValue: @"NO"       forKey: @"kSongAlwaysFadeIn"];
-	//[appDefaults setValue: @"deepbondi" forKey: @"kDefaultPlayList"];
-	//[appDefaults setValue: @"NO"        forKey: @"kStartPlaybackOnLaunch"];
-	[appDefaults setValue: @"/archive/mp3.db"       forKey: @"kPathToDatabase"];
+	[appDefaults setValue: @"/"						forKey: @"kPathToArchive"];
+	[appDefaults setValue: @"http://127.0.0.1:3000" forKey: @"kUrlRoot"];
+	[appDefaults setValue: @"YES"					forKey: @"kFadeIsOn"];
+	[appDefaults setValue: @"6.0"					forKey: @"kDefaultFadeDuration"];
+	[appDefaults setValue: @"YES"					forKey: @"kRespectIndividualFadeDurations"];
+	[appDefaults setValue: @"YES"					forKey: @"kRespectSongHinting"];
+	[appDefaults setValue: @"YES"					forKey: @"kRespectSongFadeIn"];
+	[appDefaults setValue: @"NO"					forKey: @"kSongAlwaysFadeIn"];
+	[appDefaults setValue: @"deepbondi"				forKey: @"kDefaultPlayList"];
+	[appDefaults setValue: @"NO"					forKey: @"kStartPlaybackOnLaunch"];
+	//[appDefaults setValue: @"/archive/mp3.db"       forKey: @"kPathToDatabase"];
 
 	[defaults registerDefaults: appDefaults];
 	

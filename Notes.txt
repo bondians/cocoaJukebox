@@ -1,4 +1,4 @@
-<Eridius|work> cayuse: the framework should be built with a linker path of @executable_path/../Frameworks/foobar.framework and you use a
+	<Eridius|work> cayuse: the framework should be built with a linker path of @executable_path/../Frameworks/foobar.framework and you use a
                Copy Files build phase to copy it to your frameworks dir
 
 what's needed to create the tables in sqlite
@@ -116,9 +116,17 @@ CREATE TABLE users (
     "password" text DEFAULT '' NOT NULL
 );
 
+@"SELECT key, song, artist, album, filepath, volume, fadeduration, fadein, prekey, postkey FROM songs_view WHERE key =\'%@\'", key]
+
+##################### this one is for real
+CREATE VIEW songs_view AS SELECT songs.id AS key, songs.title AS song, albums.name AS album, songs.track AS track, artists.name AS artist, genres.name AS genre, songs.file AS filepath, songs.size, songs.volume AS volume, songs.fade_duration AS fadeduration, songs.fade_in AS fadein, songs.pre_id AS prekey, songs.post_id AS postkey FROM songs, albums, artists, genres WHERE ((((songs.album_id = albums.id) AND(songs.artist_id = artists.id)) AND (songs.genre_id = genres.id)));
+
+
+################
+
 
 CREATE VIEW songs_view AS
-    SELECT songs."key" AS key, songs.song AS song, albums.album AS album, songs.track AS track, artists.artist AS artist, genres.genre AS genre, users.userid AS ripper, songs.soundex AS ssndx, albums.soundex AS alsdx, artists.soundex AS arsdx, songs.file AS filepath, songs.size, songs.volume AS volume, songs.fadeduration AS fadeduration, songs.fadein AS fadein, songs.prekey AS prekey, songs.postkey AS postkey FROM songs, albums, artists, genres, users WHERE ((((songs.album = albums."key") AND (songs.artist = artists."key")) AND (songs.genre = genres."key")) AND (songs.ripper = users."key"));
+    SELECT songs.id AS key, songs.name AS song, albums.name AS album, songs.track AS track, artists.name AS artist, genres.name AS genre, songs.file AS filepath, songs.size, songs.volume AS volume, songs.fade_duration AS fadeduration, songs.fade_in AS fadein, songs.pre_id AS prekey, songs.post_id AS postkey FROM songs, albums, artists, genres, users WHERE ((((songs.album_id = albums.id) AND(songs.artist_id = artists.id)) AND (songs.genre_id = genres.id)));
 
 
 

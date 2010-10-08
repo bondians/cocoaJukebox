@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4117373409577A82001BABFE /* mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4117373309577A82001BABFE /* mp3 */; };
 		41277D8708EB58AD00C1D4CB /* JukeboxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41277D8608EB58AD00C1D4CB /* JukeboxController.m */; };
 		41277DB908EBAF6700C1D4CB /* ArrayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 41277DB808EBAF6700C1D4CB /* ArrayAdditions.m */; };
 		414CD16B08EE5BF100DE5519 /* DBSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 414CD16A08EE5BF100DE5519 /* DBSong.m */; };
@@ -34,7 +33,6 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* cocoaJukebox_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cocoaJukebox_Prefix.pch; sourceTree = "<group>"; };
-		4117373309577A82001BABFE /* mp3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = mp3; sourceTree = "<group>"; };
 		41277D8508EB58AD00C1D4CB /* JukeboxController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = JukeboxController.h; sourceTree = "<group>"; };
 		41277D8608EB58AD00C1D4CB /* JukeboxController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = JukeboxController.m; sourceTree = "<group>"; };
 		41277DB708EBAF6700C1D4CB /* ArrayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayAdditions.h; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 		4138076A08F591F700D7D127 /* Other Files */ = {
 			isa = PBXGroup;
 			children = (
-				4117373309577A82001BABFE /* mp3 */,
 				415E1186092E965200BCD2AC /* Notes.txt */,
 				415E1176092D8B0C00BCD2AC /* com.deepbondi.playback.png */,
 				415E1157092D880200BCD2AC /* com.deepbondi.advanced.png */,
@@ -256,7 +253,6 @@
 				415E1158092D880200BCD2AC /* com.deepbondi.advanced.png in Resources */,
 				415E1177092D8B0C00BCD2AC /* com.deepbondi.playback.png in Resources */,
 				415E1187092E965200BCD2AC /* Notes.txt in Resources */,
-				4117373409577A82001BABFE /* mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="256f9384-2ceb-4bac-b940-fdffe632fcc2" kpf_version="4" name="cocoaJukebox.kpf">
+<preference-set idref="256f9384-2ceb-4bac-b940-fdffe632fcc2">
+  <boolean id="import_live">1</boolean>
+</preference-set>
+</project>

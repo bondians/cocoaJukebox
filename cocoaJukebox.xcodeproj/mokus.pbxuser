@@ -1,0 +1,229 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Development;
+		activeExecutable = CEFFA1290D23114A00393D48 /* cocoaJukebox */;
+		activeTarget = 8D1107260486CEB800E47090 /* cocoaJukebox */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* cocoaJukebox */,
+		);
+		codeSenseManager = CEFFA13A0D23114F00393D48 /* Code sense */;
+		executables = (
+			CEFFA1290D23114A00393D48 /* cocoaJukebox */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					10,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 308186995;
+			PBXWorkspaceStateSaveDate = 308186995;
+		};
+		perUserProjectItems = {
+			CE3736D1125E8F7C00E60951 /* PBXBookmark */ = CE3736D1125E8F7C00E60951 /* PBXBookmark */;
+			CE3736D6125E8F8100E60951 /* PBXTextBookmark */ = CE3736D6125E8F8100E60951 /* PBXTextBookmark */;
+		};
+		sourceControlManager = CEFFA1390D23114F00393D48 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {983, 806}}";
+			sepNavSelRange = "{261, 0}";
+			sepNavVisRange = "{0, 261}";
+			sepNavWindowFrame = "{{15, -1}, {1042, 934}}";
+		};
+	};
+	41277D8508EB58AD00C1D4CB /* JukeboxController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {983, 806}}";
+			sepNavSelRange = "{298, 0}";
+			sepNavVisRange = "{0, 1393}";
+		};
+	};
+	41277D8608EB58AD00C1D4CB /* JukeboxController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {983, 2380}}";
+			sepNavSelRange = "{5182, 0}";
+			sepNavVisRange = "{3010, 2172}";
+			sepNavWindowFrame = "{{15, -1}, {1042, 934}}";
+		};
+	};
+	41277DB808EBAF6700C1D4CB /* ArrayAdditions.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {983, 980}}";
+			sepNavSelRange = "{148, 0}";
+			sepNavVisRange = "{87, 1210}";
+			sepNavWindowFrame = "{{15, -1}, {1042, 934}}";
+		};
+	};
+	414CD16908EE5BF100DE5519 /* DBSong.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {983, 1764}}";
+			sepNavSelRange = "{2371, 0}";
+			sepNavVisRange = "{1023, 694}";
+			sepNavWindowFrame = "{{15, -1}, {1042, 934}}";
+		};
+	};
+	414CD16A08EE5BF100DE5519 /* DBSong.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {992, 7560}}";
+			sepNavSelRange = "{1323, 0}";
+			sepNavVisRange = "{987, 1104}";
+			sepNavWindowFrame = "{{50, 380}, {750, 558}}";
+		};
+	};
+	415E1176092D8B0C00BCD2AC /* com.deepbondi.playback.png */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, -1}, {1042, 934}}";
+		};
+	};
+	4180A401092B04E900A33509 /* UKPrefsPanel.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {983, 4592}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1935}";
+			sepNavWindowFrame = "{{15, -1}, {1042, 934}}";
+		};
+	};
+	41BE3B5D08F452A00044E977 /* DBMusicPlayer.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {983, 980}}";
+			sepNavSelRange = "{1386, 0}";
+			sepNavVisRange = "{224, 1506}";
+		};
+	};
+	41BE3B5E08F452A00044E977 /* DBMusicPlayer.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {903, 4676}}";
+			sepNavSelRange = "{3205, 0}";
+			sepNavVisRange = "{2350, 1314}";
+			sepNavWindowFrame = "{{50, 380}, {750, 558}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* cocoaJukebox */ = {
+		activeExec = 0;
+		executables = (
+			CEFFA1290D23114A00393D48 /* cocoaJukebox */,
+		);
+	};
+	CE3736D1125E8F7C00E60951 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CE4591470D23157B007386EB /* PhantomSongQueue.m */;
+	};
+	CE3736D6125E8F8100E60951 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE4591470D23157B007386EB /* PhantomSongQueue.m */;
+		name = "PhantomSongQueue.m: 66";
+		rLen = 0;
+		rLoc = 1953;
+		rType = 0;
+		vrLen = 1864;
+		vrLoc = 177;
+	};
+	CE4591460D23157B007386EB /* PhantomSongQueue.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {903, 706}}";
+			sepNavSelRange = "{227, 0}";
+			sepNavVisRange = "{0, 306}";
+			sepNavWindowFrame = "{{113, 116}, {962, 834}}";
+		};
+	};
+	CE4591470D23157B007386EB /* PhantomSongQueue.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {983, 923}}";
+			sepNavSelRange = "{1953, 0}";
+			sepNavVisRange = "{177, 1864}";
+			sepNavWindowFrame = "{{421, 118}, {1042, 934}}";
+		};
+	};
+	CE4591800D2318E7007386EB /* SongQueue.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 6958}}";
+			sepNavSelRange = "{2661, 51}";
+			sepNavVisRange = "{2358, 671}";
+			sepNavWindowFrame = "{{211, 282}, {750, 558}}";
+		};
+	};
+	CE4591810D2318E7007386EB /* SongQueue.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 1386}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{221, 655}";
+			sepNavWindowFrame = "{{50, 380}, {750, 558}}";
+		};
+	};
+	CE45918D0D2318F3007386EB /* SQInterface.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {983, 2898}}";
+			sepNavSelRange = "{2454, 0}";
+			sepNavVisRange = "{909, 2265}";
+			sepNavWindowFrame = "{{15, -1}, {1042, 934}}";
+		};
+	};
+	CEFFA1290D23114A00393D48 /* cocoaJukebox */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = cocoaJukebox;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	CEFFA1390D23114F00393D48 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	CEFFA13A0D23114F00393D48 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}

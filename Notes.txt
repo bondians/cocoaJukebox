@@ -1,0 +1,434 @@
+<Eridius|work> cayuse: the framework should be built with a linker path of @executable_path/../Frameworks/foobar.framework and you use a
+               Copy Files build phase to copy it to your frameworks dir
+
+what's needed to create the tables in sqlite
+
+
+Export the data from your database as tab delimited text. Create one text file for every table in your database: 
+
+
+    $ pg_dump -a <dbname> -t <tablename> > /tmp/<dumpfile>
+    ...and so on...
+
+pg_dump -a mp3 -t genres > genres.db.out
+./cleaner.pl genres.db.out genres.db
+pg_dump -a mp3 -t storage > storage.db.out
+./cleaner.pl storage.db.out storage.db
+pg_dump -a mp3 -t artists > artists.db.out
+./cleaner.pl artists.db.out artists.db
+pg_dump -a mp3 -t albums > albums.db.out
+./cleaner.pl albums.db.out albums.db
+pg_dump -a mp3 -t songs > songs.db.out
+./cleaner.pl songs.db.out songs.db
+pg_dump -a mp3 -t song_lists > song_lists.db.out
+./cleaner.pl song_lists.db.out songs_lists.db
+pg_dump -a mp3 -t users > users.db.out
+./cleaner.pl users.db.out users.db
+
+
+
+
+Trim off crap from header and footer from each file, eg: 
+
+
+    $ nano -w /tmp/<dumpfile>
+
+If required, create SQLite file and tables corresponding to tables in the original PostgreSQL database: 
+
+
+    $ sqlite3 <dbname>
+    sqlite> CREATE TABLE ...etc...
+
+Finally, import the dump files into SQLite, remembering to change the default import separator to a <tab>: 
+
+
+    $ sqlite3 <dbname>
+    sqlite> .separator "\t"
+    sqlite> .import <dumpfile> <tablename>
+
+.separator "\t"
+.import genres.db genres
+.import storage.db storage
+.import artists.db artists
+.import albums.db albums
+.import songs.db songs
+.import song_lists.db song_lists
+.import users.db users
+
+
+CREATE TABLE genres (
+    "key" integer NOT NULL,
+    genre text NOT NULL
+);
+
+CREATE TABLE "storage" (
+    home integer,
+    mp3 integer,
+    "timestamp" timestamp with time zone,
+    files integer
+);
+
+
+CREATE TABLE artists (
+    "key" integer NOT NULL,
+    artist text NOT NULL,
+    soundex text
+);
+
+CREATE TABLE albums (
+    "key" integer NOT NULL,
+    album text NOT NULL,
+    artist integer DEFAULT 1 NOT NULL,
+    genre integer DEFAULT 1 NOT NULL,
+    soundex text
+);
+
+CREATE TABLE songs (
+    "key" integer NOT NULL,
+    song text NOT NULL,
+    file text NOT NULL,
+    track integer,
+    "year" integer,
+    album integer DEFAULT 1 NOT NULL,
+    artist integer DEFAULT 1 NOT NULL,
+    genre integer DEFAULT 1 NOT NULL,
+    ripper integer DEFAULT 1 NOT NULL,
+    comments text,
+    soundex text,
+    touch timestamp with time zone,
+    size integer,
+    prekey integer DEFAULT 0 NOT NULL,
+    postkey integer DEFAULT 0 NOT NULL,
+    fadeduration double precision DEFAULT -1 NOT NULL,
+    volume double precision DEFAULT 0.7 NOT NULL,
+    fadein boolean DEFAULT true NOT NULL
+);
+
+CREATE TABLE song_lists (
+    song_key integer,
+    list_name text,
+    song_name text
+);
+
+CREATE TABLE users (
+    "key" integer NOT NULL,
+    userid text NOT NULL,
+    "password" text DEFAULT '' NOT NULL
+);
+
+
+CREATE VIEW songs_view AS
+    SELECT songs."key" AS key, songs.song AS song, albums.album AS album, songs.track AS track, artists.artist AS artist, genres.genre AS genre, users.userid AS ripper, songs.soundex AS ssndx, albums.soundex AS alsdx, artists.soundex AS arsdx, songs.file AS filepath, songs.size, songs.volume AS volume, songs.fadeduration AS fadeduration, songs.fadein AS fadein, songs.prekey AS prekey, songs.postkey AS postkey FROM songs, albums, artists, genres, users WHERE ((((songs.album = albums."key") AND (songs.artist = artists."key")) AND (songs.genre = genres."key")) AND (songs.ripper = users."key"));
+
+
+
+create index albums_pkey on albums (key);
+create index artists_pkey on artists (key);
+Create index songs_pkey on songs (key);
+
+
+CREATE VIEW songs_view AS
+    SELECT songs."key" AS key, songs.song, albums.album, songs.track, artists.artist, 
+
+genres.genre, users.userid AS ripper, songs.soundex AS ssndx, albums.soundex AS alsdx, 
+
+artists.soundex AS arsdx, songs.file AS filepath, songs.size, songs.volume, 
+
+songs.fadeduration, songs.fadein, songs.prekey, songs.postkey FROM songs, albums, artists, 
+
+genres, users WHERE ((((songs.album = albums."key") AND (songs.artist = artists."key")) 
+
+AND (songs.genre = genres."key")) AND (songs.ripper = users."key"));
+
+CREATE VIEW songs_view AS
+    SELECT songs."key" AS key, songs.song, albums.album, songs.track, artists.artist, 
+
+genres.genre, users.userid AS ripper, songs.soundex AS ssndx, albums.soundex AS alsdx, 
+
+artists.soundex AS arsdx, songs.file AS filepath, songs.size, songs.volume, 
+
+songs.fadeduration, songs.fadein, songs.prekey, songs.postkey FROM songs, albums, artists, 
+
+genres, users WHERE ((((songs.album = albums."key") AND (songs.artist = artists."key")) 
+
+AND (songs.genre = genres."key")) AND (songs.ripper = users."key"));
+
+
+<JACook> Posted earlier, guess you weren't looking...
+<JACook> 173781 => 165365 Santana - Black Magic Woman => Oye Como Va
+<JACook> 168215 => 168216 Santana - Black Magic Woman => Oye Como Va
+<JACook> 186550 => 186548 Something Like Silas - Intro => As You Lead Me
+<JACook> 172988 => 172989 Michael Hedges - Point A => Chava's Song
+<JACook> 174150 => 174153 Albert King/SRV - Who is Stevie => Don't Lie to Me
+<JACook> 165209 => 165210 Pink Floyd - Us and Them => Any Colour You Like
+<JACook> 179593 => 179594 Little Feat - Dixie Chicken => Triple Face Boogie
+<JACook> 179584 => 179585 Little Feat - Join the Band => Fat Man in the Bathtub
+<JACook> That's the complete seque list from jookie.
+<JACook> I'm sure we can find more...
+<cayuse> a
+
+<cayuse> :)
+<JACook> 186550 => 186548 Something Like Silas - Intro => As You Lead Me
+<JACook> If you request As You Lead Me, you miss the intro
+<cayuse> I blame you
+<cayuse> :)
+<JACook> Well, I didn't track the CD...
+<-[tindrum]-> you there?
+<-[tindrum]-> called that chick she's sending me something to sign.
+<-[tindrum]-> anyway, see if you can get flames to sport a box of cat-5 and maybe 4 or 5 patches for convenience.
+<JACook> 179584 => 179585 Little Feat - Join the Band => Fat Man in the Bathtub  is another
+
+create VIEW songs_view AS SELECT songs."key", songs.song, albums.album, songs.track, artists.artist, genres.genre, users.userid AS ripper, songs.soundex AS ssndx, albums.soundex AS alsdx, artists.soundex AS arsdx, songs.file AS filepath, songs.size, songs.volume, songs.fadeduration, songs.fadein, songs.prekey, songs.postkey FROM songs, albums, artists, genres, users WHERE ((((songs.album = albums."key") AND (songs.artist = artists."key")) AND (songs.genre = genres."key")) AND (songs.ripper = users."key"));
+
+
+
+Commands to add the fields to the database when we get ready.
+
+mp3=# alter table songs add volume float;
+mp3=# alter table songs alter volume set default .7;
+mp3=# update songs set volume='.7';
+mp3=# alter table songs alter volume set not null;
+
+there *are* user-definable or undedicated tags in the id3v2 spec
+who knows there might even be existing standard tags for fading... v2
+defines a lot of different things, some of them pretty obscure, it's kitchen-
+sink.
+
+
+actually, everything keys off of archive's database
+
+
+Feature List for Cocoa Jook
+Cross Fades between songs
+- id3 tags hold individual song's cross fade info in the
+  postgres database
+- uses individual song's cross-fade value if present
+- uses global crossfade value otherwise
+- crossfade(bool)
+    - respect song crossfadevalue (bool)
+        - uses individual song's cross-fade value if present
+        - uses global crossfade value otherwise
+    - respect song should (not) fade in (bool)
+        - if no respect always (one or the other); // I don't understand this
+        
+        default valume = .7 in database. can be set song specific
+
+Parameters specific to fade capability:
+---------------------------------------
+
+- [PREF] or [CONST] Default playback volume (?varname)
+  Specifies the maximum playback volume if the song-specific volume setting
+  (myVolume / volume) is 0.
+- [iVar] Song playback volume (myVolume / [volume])
+  Specifies the maximum playback volume for a given song.  If 0 or negative,
+  the global/default setting (?varname) is used.
+- [PREF] Global cross-fade enable (@"kFadeIsOn")
+  If this is turned off, none of the other parameters, except for volume,
+  are respected.  The new song is started (at full myVolume) immediately
+  upon completion of playback of the current song.
+- [iVar] Song-specific fade-in enable (songShouldFadeIn / [songShouldFadeIn])
+  If set, full cross-fading is enabled, with the new song fading in at the
+  same rate as the current one fading out.  If clear, the new song will start
+  at full (myVolume) volume at some point during current song fade-out.
+  See definition of (noFadeInStart) below.
+- [PREF] or [CONST] No-fade-in start point (? noFadeInStart)
+  This is a ratio or percentage; a value between 0.0 and 1.0.  It specifies
+  the ratio point in the fade-out of currentSong where the newSong should be
+  started IF new song fade-in is disabled.  A value of 0.5 would be interpreted
+  as "start playback half-way into fade out", whereas a value of 0.75 (3/4)
+  would mean "start playback three-quarters into fade out".  This value is
+  ignored if fade-out is disabled, in which case the new song is started
+  immediately upon termination of the current song.
+- [iVar] Song-specific fade-out time (mySongFadeDuration / [songFadeDuration])
+  If the global cross-fade enable is set (@"kFadeIsOn"), this value specifies how
+  long the current song fade-out period lasts.  A positive value specifies a
+  time in seconds, overriding the default (@"kDefaultFadeDuration) setting.
+  A value of 0.0 is allowable, and specifies that no fade-out should occur.
+  If the value is negative, the default (@"kDefaultFadeDuration") setting
+  specifies the fade-out time.
+- [PREF] Default fade-out time (@"kDefaultFadeDuration")
+  This value specifies the fade-out time to be applied to the current song
+  IF the song-specific fade-out time (mySongFadeDuration) is negative.
+
+Variables to add (that do not exist already) to implement fading:
+-----------------------------------------------------------------
+
+- Default volume setting.  This can be a iVar, a preference, or a #define
+  constant if nothing else.
+- No-fade-in start point (ratio).  Same as above.
+
+Suggested methods to add (probably in the Player)
+These methods abstract default vs. song-specific settings
+---------------------------------------------------------
+
+- peakVolumeForSong: (DBSong *)
+  This method will check the song's local volume setting ([volume]) and return
+  it if it is > 0.0.  Otherwise, the default volume setting (?varname) will
+  be returned.
+  * NOTE: Won't implement this for now.
+
+- doFadeInForSong: (DBSong *)
+  Will return NO unconditionally if the global fade enable (@"kFadeIsOn")
+  is off.  Otherwise, will return the song-specific fade-in-enable
+  setting ([songShouldFadeIn]).
+
+- fadeOutDurationForSong: (DBSong *)
+  Returns the song's specified fade-out time ([songFadeDuration]) if it is
+  positive or 0.0.  If negative, returns the global setting
+  (@"kDefaultFadeDuration").
+
+Fade controller decision tree
+-----------------------------
+
+Before this can be specified, I need to get a better picture of what is being
+done to start and stop songs right now, and determine how much the
+fade controller will be responsible for - and just as importantly, what it
+will NOT be responsible for vis. starting and stopping songs.
+
+
+
+
+
+User Preferences to support:
+
+-songsShouldFade (bool)
+-defaultFadeDuration (float)
+-respect Song's fade duration (bool)
+-respect song's should not fade in flag (bool)
+ - or always do (bool in/out)
+
+
+
+this is what I want to do.. or how I envision it.. it is up to debate..
+
+we will start a timer (.1 Sec or so) on a method in the player.
+
+yes, a decision tree or state machine or the like - and a lot of the prefs and song-specific fade settings
+will be checked and acted upon in this service routine
+Hopefully, a state machine or semi-state machine (think switch/case) will be possible, although it may 
+require if-then logic, but I understand your goal - try to minimize the amount of code to be execed at any
+given pass thru the service routine.
+
+yes.. one thing that I'd like to implement if possible..
+is for the machine to 'break' after any successful item is handled..
+that way.. if we get like 5 things, we don't pause playback..
+is this possible? i'd rather have fade-events be dorked up by .1sec here or there then music to pause for same.
+
+One thing I am not clear on is just where playback initiation will take place... will the fade controller be
+responsible (I would think, possibly, that it should be, but not sure)
+
+on songDidEnd  playNextSong will be called..(update version slightly)
+updated version will check for if(nextsong) to decide what will be the next currentSong at it's end.
+
+but normally speaking, when fading is on.. it wil have to start nextSong..
+playNext song will dispose of currentSong, and promote nextSong (optionally) or getnextsong from the queue and do it's thing.
+
+regardless of whether songShouldFade..
+in the case of 
+
+first line for example.
+
+-(void) fadeManager{
+
+if (! serverIsRunning || ! songShouldFade) return;
+
+if [currentSong fadeDuration] <= 0
+
+return;
+}
+i'm thinking of ifs
+that all break
+or return actually
+
+- (void) fadeManager
+{
+    if (! serverIsRunning || ! songsShouldFade || ! currentSong || ! [currentSong isPlaying]) return;
+
+	NSTimeInterval currentTime;
+	NSTimeInterval duration;
+	double fadeDuration;
+	double timeToFade;
+	BOOL songDoesNotFadeOut = NO;
+	BOOL songDoesNotFadeIn = NO;
+	
+	if (respectIndividualFadeDurations){
+		fadeDuration = [currentSong songFadeDuration];
+		if (fadeDuration < 0) fadeDuration = defaultFadeDuration;
+	} else {
+		fadeDuration = defaultFadeDuration;
+	}
+	
+	if (respectIndividualFadeDurations && [currentSong songFadeDuration] == 0) songDoesNotFadeOut = YES;
+	
+	QTGetTimeInterval([[currentSong movie] duration], &duration);
+	QTGetTimeInterval([[currentSong movie] currentTime], &currentTime);
+
+	timeToFade = duration - currentTime - fadeDuration;
+	
+	if (timeToFade - kPreLoadTime > 0) return;
+
+	if (!nextSong){
+		NSLog (@"fadeManager: attempting to load next song: %f", duration-currentTime);
+		nextSong = [[mySongQueue getNextSong] retain];
+		if (nextSong){
+			if (! [nextSong loadSong]) nextSong = nil;
+			return;
+		}
+		nextSong = nil;
+		return;
+	}
+
+	if (! songDoesNotFadeOut && ! [currentSong isFading]){
+		NSLog (@"fadeManager: attempting to initiate fadeout: %f", duration-currentTime);
+		[currentSong fadeOutNow: NO length: fadeDuration];
+		return;		
+	}
+	
+	if ([nextSong isPlaying]) return;
+	
+	if (timeToFade > 0) return;
+	NSLog (@"attempting to start new song: %f", duration-currentTime);
+	if (nextSong){
+		if (songDoesNotFadeOut){
+			[nextSong play];
+			return;
+		} else {
+			[nextSong startPlaybackWithFade: fadeDuration];
+			return;
+		}
+	
+	}
+    return;
+}
+
+
+cleaner.pl
+
+
+#!/usr/bin/perl
+
+use strict;
+
+my $file  = shift @ARGV;
+my $ofile = shift @ARGV;
+
+open FP,  $file      or die "Could not open file:$file";
+open OFP, "> $ofile" or die "Could not open output file:$ofile";
+my $start = 0;
+
+for my $line (<FP>) {
+    if ( $line =~ m#^\\.#) {
+        $start = 0;
+    }
+    if ( $start == 1 ) {
+        print OFP $line;
+    }
+    if ( $line =~ m/^COPY/ ) {
+        $start = 1;
+    }
+
+
+}
+
+close FP;
+close OFP;

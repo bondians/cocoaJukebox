@@ -30,12 +30,6 @@
 	currentSong  = nil;
 	nextSong = nil;
 	currentSongLock = [[NSLock alloc] init];
-	
-	songsShouldFade = [[[NSUserDefaults standardUserDefaults] objectForKey: @"kFadeIsOn"] boolValue];
-	defaultFadeDuration = [[[NSUserDefaults standardUserDefaults] objectForKey: @"kDefaultFadeDuration"] floatValue];
-	respectIndividualFadeDurations = [[[NSUserDefaults standardUserDefaults] objectForKey: @"kRespectIndividualFadeDurations"] boolValue];
-	respectIndividualFadeIn = [[[NSUserDefaults standardUserDefaults] objectForKey: @"kRespectSongFadeIn"] boolValue];
-	alwaysFadeIn = [[[NSUserDefaults standardUserDefaults] objectForKey: @"kSongAlwaysFadeIn"] boolValue];
 
 	defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 	//defaultsController = [NSUserDefaults standardUserDefaults];

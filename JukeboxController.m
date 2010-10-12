@@ -6,8 +6,8 @@
 @implementation JukeboxController
 
 + (void) initialize
+
 {
-	[super initialize];
 	NSMutableDictionary *appDefaults;
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -15,21 +15,20 @@
 	
 	// advanced preferences
 	
-	[appDefaults setValue: @"/"						forKey: @"kPathToArchive"];
-	[appDefaults setValue: @"http://127.0.0.1:3000" forKey: @"kUrlRoot"];
-	[appDefaults setValue: @"YES"					forKey: @"kFadeIsOn"];
-	[appDefaults setValue: @"6.0"					forKey: @"kDefaultFadeDuration"];
-	[appDefaults setValue: @"YES"					forKey: @"kRespectIndividualFadeDurations"];
-	[appDefaults setValue: @"YES"					forKey: @"kRespectSongHinting"];
-	[appDefaults setValue: @"YES"					forKey: @"kRespectSongFadeIn"];
-	[appDefaults setValue: @"NO"					forKey: @"kSongAlwaysFadeIn"];
+	[appDefaults setValue: @"/"								forKey: @"kPathToArchive"];
+	[appDefaults setValue: @"http://127.0.0.1:3000"			forKey: @"kUrlRoot"];
+	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kFadeIsOn"];
+	[appDefaults setValue: @"6.0"							forKey: @"kDefaultFadeDuration"];
+	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectIndividualFadeDurations"];
+	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectSongHinting"];
+	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectSongFadeIn"];
+	[appDefaults setValue: [NSNumber numberWithBool:NO]		forKey: @"kSongAlwaysFadeIn"];
 	//[appDefaults setValue: @"deepbondi"				forKey: @"kDefaultPlayList"];
-	[appDefaults setValue: @"NO"					forKey: @"kStartPlaybackOnLaunch"];
+	[appDefaults setValue: [NSNumber numberWithBool:NO]		forKey: @"kStartPlaybackOnLaunch"];
 	//[appDefaults setValue: @"/archive/mp3.db"       forKey: @"kPathToDatabase"];
 
 	[defaults registerDefaults: appDefaults];
 	[defaults synchronize];
-	
 	
 }
 

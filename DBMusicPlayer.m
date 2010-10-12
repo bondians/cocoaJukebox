@@ -31,7 +31,14 @@
 	nextSong = nil;
 	currentSongLock = [[NSLock alloc] init];
 	
+	songsShouldFade = [[[NSUserDefaults standardUserDefaults] objectForKey: @"kFadeIsOn"] boolValue];
+	defaultFadeDuration = [[[NSUserDefaults standardUserDefaults] objectForKey: @"kDefaultFadeDuration"] floatValue];
+	respectIndividualFadeDurations = [[[NSUserDefaults standardUserDefaults] objectForKey: @"kRespectIndividualFadeDurations"] boolValue];
+	respectIndividualFadeIn = [[[NSUserDefaults standardUserDefaults] objectForKey: @"kRespectSongFadeIn"] boolValue];
+	alwaysFadeIn = [[[NSUserDefaults standardUserDefaults] objectForKey: @"kSongAlwaysFadeIn"] boolValue];
+
 	defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
+	//defaultsController = [NSUserDefaults standardUserDefaults];
 	[self bind: @"songsShouldFade" toObject: defaultsController 
 		  withKeyPath: @"values.kFadeIsOn" options:nil];
 	[self bind: @"defaultFadeDuration" toObject: defaultsController 
@@ -42,7 +49,6 @@
 		  withKeyPath: @"values.kRespectSongFadeIn" options:nil];
 	[self bind: @"alwaysFadeIn" toObject: defaultsController
 		  withKeyPath: @"values.kSongAlwaysFadeIn" options:nil];
-		  
 	// observeValueForKeyPath:ofObject:change:context
 //	myError = [[NSError alloc] init];
     fadeManagerTimer = [[NSTimer scheduledTimerWithTimeInterval: 0.1
@@ -177,6 +183,7 @@
 - (BOOL) playNextSong
 {
 	NSLog (@"DBMusicPlayer: -playNextSong: entered");
+	NSLog (@"ShouldFade= %i,DefaultFade= %f, respectIndiv= %i, AlwaysFade= %i ", songsShouldFade, defaultFadeDuration, respectIndividualFadeDurations, respectIndividualFadeIn, alwaysFadeIn);
 //	[currentSongLock lock];
 	[self dumpOldSong];
 	fadeManagerState = 0;

@@ -31,6 +31,7 @@
 	BOOL alwaysFadeIn;
 	
 	NSUserDefaultsController *defaultsController;
+	//NSUserDefaults *defaultsController;
 	
 	PhantomSongQueue *mySongQueue;
 	NSNotification *aNotification;

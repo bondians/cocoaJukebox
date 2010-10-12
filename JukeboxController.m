@@ -22,12 +22,14 @@
 	[appDefaults setValue: @"YES"					forKey: @"kRespectIndividualFadeDurations"];
 	[appDefaults setValue: @"YES"					forKey: @"kRespectSongHinting"];
 	[appDefaults setValue: @"YES"					forKey: @"kRespectSongFadeIn"];
-	[appDefaults setValue: @"NO"					forKey: @"kSongAlwaysFadeIn"];
-	[appDefaults setValue: @"deepbondi"				forKey: @"kDefaultPlayList"];
+	[appDefaults setValue: @"YES"					forKey: @"kSongAlwaysFadeIn"];
+	//[appDefaults setValue: @"deepbondi"				forKey: @"kDefaultPlayList"];
 	[appDefaults setValue: @"NO"					forKey: @"kStartPlaybackOnLaunch"];
 	//[appDefaults setValue: @"/archive/mp3.db"       forKey: @"kPathToDatabase"];
 
 	[defaults registerDefaults: appDefaults];
+	[defaults synchronize];
+	
 	
 }
 

@@ -67,9 +67,7 @@
 - (BOOL) loadSong
 {
 	if (! myMovie) {
-		if (DBSongType == DBSongWithData)
-			[self saveFileForPlayback];
-	}
+
 	myMovie = [[QTMovie alloc] initWithFile: [self path] error: nil];
 	
 	//[myMovie play];

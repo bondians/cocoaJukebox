@@ -78,12 +78,18 @@
         [self dumpFadeOutTimer];
 	[myMovie stop];
 	[myMovie release];
+        myMovie = nil;
 //      [myMovie autorelease];
 	[key release];
+        key = nil;
 	[title release];
+        title = nil;
 	[artist release];
+        artist = nil;
 	[album release];
+        album = nil;
 	[path release];
+        path = nil;
 	[preQueueKey release];
 	[postQueueKey release];
 	[super dealloc];

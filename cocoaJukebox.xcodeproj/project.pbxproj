@@ -52,18 +52,6 @@
 		8D1107320486CEB800E47090 /* cocoaJukebox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaJukebox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4591460D23157B007386EB /* PhantomSongQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhantomSongQueue.h; sourceTree = "<group>"; };
 		CE4591470D23157B007386EB /* PhantomSongQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhantomSongQueue.m; sourceTree = "<group>"; };
-		CE4591800D2318E7007386EB /* SongQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongQueue.m; sourceTree = "<group>"; };
-		CE4591810D2318E7007386EB /* SongQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongQueue.h; sourceTree = "<group>"; };
-		CE4591820D2318E7007386EB /* NSStreamAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStreamAdditions.m; sourceTree = "<group>"; };
-		CE4591830D2318E7007386EB /* NSStreamAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStreamAdditions.h; sourceTree = "<group>"; };
-		CE4591840D2318E7007386EB /* JBNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBNetworkManager.m; sourceTree = "<group>"; };
-		CE4591850D2318E7007386EB /* JBNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBNetworkManager.h; sourceTree = "<group>"; };
-		CE4591860D2318E7007386EB /* JBNetworkIOHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBNetworkIOHandle.m; sourceTree = "<group>"; };
-		CE4591870D2318E7007386EB /* JBNetworkIOHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBNetworkIOHandle.h; sourceTree = "<group>"; };
-		CE45918C0D2318F3007386EB /* SQInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQInterface.h; sourceTree = "<group>"; };
-		CE45918D0D2318F3007386EB /* SQInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQInterface.m; sourceTree = "<group>"; };
-		CE45918E0D2318F3007386EB /* UserPlayList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPlayList.h; sourceTree = "<group>"; };
-		CE45918F0D2318F3007386EB /* UserPlayList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPlayList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +114,6 @@
 		29B97314FDCFA39411CA2CEA /* cocoaJukebox */ = {
 			isa = PBXGroup;
 			children = (
-				CE45917E0D2318D6007386EB /* Depractions */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				4138076A08F591F700D7D127 /* Other Files */,
@@ -176,25 +163,6 @@
 				415E1157092D880200BCD2AC /* com.deepbondi.advanced.png */,
 			);
 			name = "Other Files";
-			sourceTree = "<group>";
-		};
-		CE45917E0D2318D6007386EB /* Depractions */ = {
-			isa = PBXGroup;
-			children = (
-				CE4591800D2318E7007386EB /* SongQueue.m */,
-				CE4591810D2318E7007386EB /* SongQueue.h */,
-				CE4591820D2318E7007386EB /* NSStreamAdditions.m */,
-				CE4591830D2318E7007386EB /* NSStreamAdditions.h */,
-				CE4591840D2318E7007386EB /* JBNetworkManager.m */,
-				CE4591850D2318E7007386EB /* JBNetworkManager.h */,
-				CE4591860D2318E7007386EB /* JBNetworkIOHandle.m */,
-				CE4591870D2318E7007386EB /* JBNetworkIOHandle.h */,
-				CE45918C0D2318F3007386EB /* SQInterface.h */,
-				CE45918D0D2318F3007386EB /* SQInterface.m */,
-				CE45918E0D2318F3007386EB /* UserPlayList.h */,
-				CE45918F0D2318F3007386EB /* UserPlayList.m */,
-			);
-			name = Depractions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,6 +353,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				GCC_VERSION = 4.0;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Development;
 		};
@@ -393,6 +363,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				GCC_VERSION = 4.0;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Deployment;
 		};
@@ -401,6 +373,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				GCC_VERSION = 4.0;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Default;
 		};

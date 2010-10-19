@@ -324,7 +324,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>JukeboxController.m</string>
+								<string>objc.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -332,11 +332,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>JukeboxController.m</string>
+										<string>objc.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>411A4A541264DBBA000C057E</string>
+										<string>410753B4126D26C50012FC56</string>
 										<key>history</key>
 										<array>
 											<string>410F611708FF47C3002B050D</string>
@@ -366,7 +366,6 @@
 											<string>4162DCC20C568F5E00FE98D3</string>
 											<string>4162DCC30C568F5E00FE98D3</string>
 											<string>4162DCC40C568F5E00FE98D3</string>
-											<string>4199E947125EBD8100667E57</string>
 											<string>41BFB2C3125FAD5100610B20</string>
 											<string>41BFB2C4125FAD5100610B20</string>
 											<string>41BFB2D1125FB1EA00610B20</string>
@@ -376,7 +375,9 @@
 											<string>411A490B1264C3A8000C057E</string>
 											<string>411A49401264CF39000C057E</string>
 											<string>411A4A101264D171000C057E</string>
-											<string>411A49411264CF39000C057E</string>
+											<string>415877A5126A61F200365A13</string>
+											<string>41EA353E126C10F300511E8C</string>
+											<string>41EA3541126C10F300511E8C</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -434,9 +435,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>411A48C81264B184000C057E</string>
+				<string>410753AB126D1DE40012FC56</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>411A48C91264B184000C057E</string>
+				<string>410753AC126D1DE40012FC56</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -572,11 +573,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>411A48D41264B184000C057E</string>
-		<string>411A48D51264B184000C057E</string>
 		<string>412A308E125E8E3D00AADB80</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/cayuse/Desktop/bondiproj/cocoaJukebox/branches/cocoaJukebox/cocoaJukebox.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -601,7 +599,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>JukeboxController.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -610,7 +608,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {706, 416}}</string>
 								<key>RubberWindowFrame</key>
-								<string>552 208 706 568 0 0 1440 878 </string>
+								<string>551 207 706 568 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -618,8 +616,6 @@
 							<string>416pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -636,7 +632,7 @@
 								<key>Frame</key>
 								<string>{{0, 421}, {706, 106}}</string>
 								<key>RubberWindowFrame</key>
-								<string>552 208 706 568 0 0 1440 878 </string>
+								<string>551 207 706 568 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -659,7 +655,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>412A308E125E8E3D00AADB80</string>
-				<string>411A48CB1264B184000C057E</string>
+				<string>410753AD126D1DE40012FC56</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -668,7 +664,7 @@
 			<key>WindowContentMinSize</key>
 			<string>486 300</string>
 			<key>WindowString</key>
-			<string>552 208 706 568 0 0 1440 878 </string>
+			<string>551 207 706 568 0 0 1440 878 </string>
 			<key>WindowToolGUID</key>
 			<string>412A308E125E8E3D00AADB80</string>
 			<key>WindowToolIsVisible</key>
@@ -781,13 +777,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>411A48CC1264B184000C057E</string>
+				<string>410753AE126D1DE40012FC56</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>411A48CD1264B184000C057E</string>
-				<string>411A48CE1264B184000C057E</string>
-				<string>411A48CF1264B184000C057E</string>
-				<string>411A48D01264B184000C057E</string>
-				<string>411A48D11264B184000C057E</string>
+				<string>410753AF126D1DE40012FC56</string>
+				<string>410753B0126D1DE40012FC56</string>
+				<string>410753B1126D1DE40012FC56</string>
+				<string>410753B2126D1DE40012FC56</string>
+				<string>410753B3126D1DE40012FC56</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>

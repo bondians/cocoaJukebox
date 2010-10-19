@@ -44,7 +44,7 @@
 	NSString *artist =					[lines objectAtIndex: 3];
 	NSString *album =					[lines objectAtIndex: 4];
 //	NSString *genre =					[ lines objectAtIndex: 5];
-	BOOL fade =			[(NSString *)	[lines objectAtIndex: 6] boolValue];
+	BOOL fade =			[(NSString *)	[lines objectAtIndex: 6] isEqualToString: @"true"];
 	float ftime =		[(NSString *)	[lines objectAtIndex: 7] floatValue];
 	float vol =			[(NSString *)	[lines objectAtIndex: 8] floatValue];
 	

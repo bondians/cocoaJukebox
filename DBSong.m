@@ -66,8 +66,6 @@
 
 - (BOOL) loadSong
 {
-	if (! myMovie) {
-
 	myMovie = [[QTMovie alloc] initWithFile: [self path] error: nil];
 	
 	//[myMovie play];

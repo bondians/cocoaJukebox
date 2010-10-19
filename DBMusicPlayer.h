@@ -46,7 +46,6 @@
 }
 
 + (id) musicPlayerWithPlayList: (PhantomSongQueue *) aPlayList;
-- (id) initWithPlayList: (PhantomSongQueue *) aPlayList;
 - (void) setPlayList: (PhantomSongQueue *) aPlayList;
 - (PhantomSongQueue *) songQueue;
 - (void) QTMovieDidEndNotification: (NSNotification *) notification;

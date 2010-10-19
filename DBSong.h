@@ -22,16 +22,9 @@
 #define IN YES
 #define OUT NO
 
-enum DBSongTypes_t {
-    DBSongWithPath,
-	// Song Should be loaded from it's path key.
-    DBSongWithData
-	// Song should be loaded from data.
-};
 
 @interface DBSong : NSObject
 {
-	enum DBSongTypes_t DBSongType;
 	NSString *key;
 	NSString *title;
 	NSString *artist;
@@ -43,7 +36,6 @@ enum DBSongTypes_t {
 	
 	BOOL isPlaying;
 	BOOL songShouldFadeIn;
-	BOOL cameOverNetwork;
 	BOOL isFading;
 	double mySongFadeDuration;
 	double songFadeInDuration;

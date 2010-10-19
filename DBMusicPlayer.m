@@ -43,9 +43,9 @@
 		  withKeyPath: @"values.kRespectSongFadeIn" options:nil];
 	[self bind: @"alwaysFadeIn" toObject: defaultsController
 		  withKeyPath: @"values.kSongAlwaysFadeIn" options:nil];
-	// observeValueForKeyPath:ofObject:change:context
+//      observeValueForKeyPath:ofObject:change:context
 //	myError = [[NSError alloc] init];
-    fadeManagerTimer = [[NSTimer scheduledTimerWithTimeInterval: 0.1
+        fadeManagerTimer = [[NSTimer scheduledTimerWithTimeInterval: 0.1
 					target: self selector: @selector(fadeManager) userInfo: nil repeats: YES] retain];
 					
 	fadeManagerState = 0;
@@ -55,7 +55,8 @@
 
 - (id) initWithPlayList: (PhantomSongQueue *) aPlayList
 {
-	[self init];
+	if (![self init])
+            return nil;
 	[self setPlayList: aPlayList];
 	return self;
 }

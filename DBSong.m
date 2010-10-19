@@ -23,8 +23,6 @@
 - (id) init
 {
 	if ((self = [super init]) != nil) {
-		DBSongType = DBSongWithPath;
-		cameOverNetwork = NO;
 		key = nil;
 		title = nil;
 		artist = nil;

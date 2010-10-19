@@ -43,7 +43,7 @@
 	NSString *path =					[lines objectAtIndex: 2];
 	NSString *artist =					[lines objectAtIndex: 3];
 	NSString *album =					[lines objectAtIndex: 4];
-//	NSString *genre =					[ lines objectAtIndex: 5];
+//	NSString *genre =					[lines objectAtIndex: 5];
 	BOOL fade =			[(NSString *)	[lines objectAtIndex: 6] isEqualToString: @"true"];
 	float ftime =		        [(NSString *)	[lines objectAtIndex: 7] floatValue];
 	float vol =			[(NSString *)	[lines objectAtIndex: 8] floatValue];
@@ -54,9 +54,9 @@
 							album:	album
 							path:	path];
 	
-	[song setSongShouldFadeIn:		fade	];
-	[song setSongFadeDuration:		ftime	];
-	[song setVolume:				vol		];
+	[song setSongShouldFadeIn:  fade ];
+	[song setSongFadeDuration:  ftime ];
+	[song setVolume:    vol	];
 	
 	NSLog(@"got next song, %@, %d", [song path], [song songShouldFadeIn]);
 	return [song autorelease];

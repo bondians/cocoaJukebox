@@ -41,7 +41,6 @@
 		songFadeInDuration = 0.0;
 		songFadeOutDuration = 0.0;
 		fadeEndTime = 0.0;
-		movieData = [[NSMutableData alloc] init];
 		fadeOutTimer = nil;
 		fadeInTimer = nil;
 	}
@@ -49,15 +48,6 @@
 	return self;
 }
 
-- (id) initWithKey: (NSString *) aKey
-{
-	if (![self init])
-		return nil;
-
-	key = aKey;
-
-	return self;
-}
 
 - (id) initWithKey: (NSString *) aKey title: (NSString *) aTitle 
 		   artist: (NSString *) anArtist album: (NSString *) anAlbum path: (NSString *) aPath
@@ -65,11 +55,11 @@
 	if (! [self init])
 		return nil;
 
-	key = [aKey retain];
-	title = [aTitle retain];
+	key =    [aKey retain];
+	title =  [aTitle retain];
 	artist = [anArtist retain];
-	album = [anAlbum retain];
-	path = [aPath retain];
+	album =  [anAlbum retain];
+	path =   [aPath retain];
 
 	return self;
 }
@@ -91,10 +81,10 @@
 
 - (void) dealloc {
 	[self dumpFadeInTimer];
-    [self dumpFadeOutTimer];
+        [self dumpFadeOutTimer];
 	[myMovie stop];
 	[myMovie release];
-	//[myMovie autorelease];
+//      [myMovie autorelease];
 	[key release];
 	[title release];
 	[artist release];
@@ -102,28 +92,9 @@
 	[path release];
 	[preQueueKey release];
 	[postQueueKey release];
-	[movieData release];
 	[super dealloc];
 }
 
-- (void) loadMovieData
-{
-	if (! myMovie) {
-		movieData = [[NSData dataWithContentsOfFile: [self path]] retain];
-		DBSongType = DBSongWithData;
-	}
-}
-
-- (NSMutableData *) movieData
-{
-	return movieData;
-}
-
-- (void) setMovieData: (NSData *) data
-{
-	[movieData setData: data];
-	DBSongType = DBSongWithData;
-}
 
 - (BOOL) startPlaybackWithFade: (double) fadeInTime
 {
@@ -397,78 +368,6 @@
 	if ([[self key] isEqual: [anObject key]]) Equal = YES;
 
 	return Equal;
-}
-
-- (void) saveFileForPlayback
-{
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	NSString *startPath = NSTemporaryDirectory();
-	NSString *workingPath = [NSString stringWithFormat: @"%@%@", startPath, path];
-	
-	NSArray *pathArray = [workingPath componentsSeparatedByString: @"/"];
-	
-	NSEnumerator *usersEnumerator = [pathArray objectEnumerator];
-	NSString *thisObject;
-	NSString *saveLast;
-	NSMutableString *finalPath = [[[NSMutableString alloc] init] autorelease];
-	
-	while (thisObject = [usersEnumerator nextObject]) {
-		if (thisObject) {
-			[finalPath appendString: @"/"];
-			[finalPath appendString: thisObject];
-			if (![fileManager fileExistsAtPath: finalPath])
-				[fileManager createDirectoryAtPath: finalPath attributes: nil];
-			saveLast = thisObject;
-		}
-	}
-
-	[finalPath appendFormat: @"/%@", saveLast];
-	
-	[fileManager createFileAtPath: finalPath contents: movieData attributes: nil];
-	//[fileHandle closeFile];
-	[self setPath: finalPath];
-	DBSongType = DBSongWithPath;
-	cameOverNetwork = YES;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-	if (DBSongType == DBSongWithData)
-		[encoder encodeObject: movieData forKey: @"movieData_"];
-	if (key)
-		[encoder encodeObject: key forKey: @"key_"];
-	if (title)
-		[encoder encodeObject: title forKey: @"title_"];
-	if (artist)
-		[encoder encodeObject: artist forKey: @"artist_"];
-	if (album)
-		[encoder encodeObject: album forKey: @"album_"];
-	if (path)
-		[encoder encodeObject: path forKey: @"path_"];
-	[encoder encodeBool: songShouldFadeIn forKey: @"fadeInBool_"];
-	[encoder encodeDouble: mySongFadeDuration forKey: @"fadeInDuration_"];
-	[encoder encodeFloat: myVolume forKey: @"volume_"];
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-	if ((self = [super init]) != nil) {
-		if ([decoder containsValueForKey: @"movieData_"]) {
-			movieData = [[decoder decodeObjectForKey: @"movieData_"] retain];
-			DBSongType = DBSongWithData;
-		}
-
-		key = [[decoder decodeObjectForKey: @"key_"] retain];
-		title = [[decoder decodeObjectForKey: @"title_"] retain];
-		artist = [[decoder decodeObjectForKey: @"artist_"] retain];
-		album = [[decoder decodeObjectForKey: @"album_"] retain];
-		path = [[decoder decodeObjectForKey: @"path_"] retain];
-		songShouldFadeIn = [decoder decodeBoolForKey: @"fadeInBool_"];
-		mySongFadeDuration = [decoder decodeDoubleForKey: @"fadeInDuration_"];
-		myVolume = [decoder decodeFloatForKey: @"volume_"];
-	}
-
-	return self;
 }
 
 - (double) timeLeft

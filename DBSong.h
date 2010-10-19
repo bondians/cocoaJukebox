@@ -56,19 +56,16 @@ enum DBSongTypes_t {
 	
 	BOOL songIsLoaded;
 	QTMovie *myMovie;
-	NSMutableData *movieData;
 	//NSError *myError;
 }
 
 - (id) init;
-- (id) initWithKey: (NSString *) aKey;
 - (id) initWithKey: (NSString *) aKey title: (NSString *) aTitle 
 		   artist: (NSString *) anArtist album: (NSString *) anAlbum path: (NSString *) aPath;
 - (int) hash;
 - (void) dealloc;
 
 - (BOOL) loadSong;
-- (void) loadMovieData;
 - (BOOL) play;
 - (BOOL) startPlaybackWithFade: (double) fadeInTime;
 - (void) fadeOutNow: (bool) immediatly length: (double) duration;
@@ -77,8 +74,6 @@ enum DBSongTypes_t {
 - (BOOL) isEqual:(id) anObject;
 
 - (QTMovie *) movie;
-- (NSMutableData *) movieData;
-- (void) setMovieData: (NSData *) data;
 
 - (NSString *) key;
 - (id) valueForKey: (NSString *) someKey;
@@ -108,9 +103,6 @@ enum DBSongTypes_t {
 - (void) dumpFadeOutTimer;
 //- (void) prepNext;
 //- (void) prepareForPlayback;
-
-- (void) encodeWithCoder:(NSCoder *)encoder;
-- (id) initWithCoder: (NSCoder *) decoder;
 
 - (BOOL) songShouldFadeIn;
 - (void) setSongShouldFadeIn: (BOOL) aBool;

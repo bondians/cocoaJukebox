@@ -109,8 +109,6 @@ enum DBSongTypes_t {
 - (double) songFadeDuration;
 - (void) setSongFadeDuration: (double) duration;
 
-- (void) saveFileForPlayback;
-
 - (double) timeLeft;
 - (double) timeToFade;
 - (double) halfTimeToFade;

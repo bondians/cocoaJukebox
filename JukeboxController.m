@@ -109,7 +109,6 @@
 
 	NSLog(@"songDidChange: %@", [myMusicPlayer currentSong]);
 
-	[[myMusicPlayer currentSongLock] lock];
 	if ([myMusicPlayer currentSong] && [myMusicPlayer serverRunning]) {
 		QTGetTimeInterval([[[myMusicPlayer currentSong] movie] duration], &playTime);
 		[dbKeyDisplay setStringValue: [[myMusicPlayer currentSong] key]];
@@ -123,7 +122,6 @@
 		[songArtistDisplay setStringValue: @"-- Stopped --"];
 		[songTimeDisplay setStringValue: @"00:00"];
 	}
-	[[myMusicPlayer currentSongLock] unlock];
 }
 
 - (IBAction) showPreferences:(id)sender
@@ -135,14 +133,11 @@
 {
 	NSTimeInterval currentTime;
 	NSTimeInterval playTime;
-//	if ([[myMusicPlayer currentSongLock] tryLock]){
 		if ([myMusicPlayer currentSong]) {
 			QTGetTimeInterval([[[myMusicPlayer currentSong] movie] currentTime], &currentTime);
 			QTGetTimeInterval([[[myMusicPlayer currentSong] movie] duration], &playTime);
 			[songTimeDisplay setStringValue: [self doubleToTime: playTime - currentTime]];
 		}
-//		[[myMusicPlayer currentSongLock] unlock];
-//	}
 }
 
 - (void) registerForNotifications

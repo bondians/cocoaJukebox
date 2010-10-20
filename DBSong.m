@@ -64,32 +64,29 @@
 
 - (BOOL) loadSong
 {
+	NSLog(@"\n Loadsong again?\n");
+	if (myMovie) 
+		return (myMovie != nil);
 	myMovie = [[QTMovie alloc] initWithFile: [self path] error: nil];
 	
 	//[myMovie play];
 	//[myMovie stop];
-	//NSLog(@"Title: %@\n string duration: %@, string currentTime: %@",[self title], QTStringFromTime([myMovie duration]), QTStringFromTime([myMovie currentTime]));
+	NSLog(@"Title: %@\n string duration: %@, string currentTime: %@",[self title], QTStringFromTime([myMovie duration]), QTStringFromTime([myMovie currentTime]));
 	
 	return (myMovie != nil);
 }
 
 - (void) dealloc {
 	[self dumpFadeInTimer];
-        [self dumpFadeOutTimer];
+	[self dumpFadeOutTimer];
 	[myMovie stop];
 	[myMovie release];
-        myMovie = nil;
-//      [myMovie autorelease];
+//	[myMovie autorelease];
 	[key release];
-        key = nil;
 	[title release];
-        title = nil;
 	[artist release];
-        artist = nil;
 	[album release];
-        album = nil;
 	[path release];
-        path = nil;
 	[preQueueKey release];
 	[postQueueKey release];
 	[super dealloc];

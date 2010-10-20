@@ -37,7 +37,6 @@
 	NSNotification *aNotification;
 	DBSong *currentSong;
 	DBSong *nextSong;
-	NSLock *currentSongLock;
 	
 	NSTimer *fadeManagerTimer;
 	
@@ -62,8 +61,6 @@
 - (BOOL) serverRunning;
 - (NSString *) currentSongKey;
 - (DBSong *) currentSong;
-- (NSLock *) currentSongLock;
-
 @end
 
 

@@ -29,7 +29,6 @@
 	songIsPaused = NO;
 	currentSong  = nil;
 	nextSong = nil;
-	currentSongLock = [[NSLock alloc] init];
 
 	defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 	//defaultsController = [NSUserDefaults standardUserDefaults];
@@ -71,7 +70,8 @@
 	double fadeDuration;
 	double timeRemaining;
 	int oldState;
-
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
 	if (respectIndividualFadeDurations){
 		fadeDuration = [currentSong songFadeDuration];
 		if (fadeDuration < 0) fadeDuration = defaultFadeDuration;
@@ -161,7 +161,8 @@
 
 	if (oldState != fadeManagerState)
 		NSLog(@"fadeManager: Previous state = %d, New state = %d", oldState, fadeManagerState);
-
+	
+	[pool release];
 	return;
 }
 
@@ -179,7 +180,6 @@
 {
 	NSLog (@"DBMusicPlayer: -playNextSong: entered");
 	NSLog (@"ShouldFade= %i,DefaultFade= %f, respectIndiv= %i, AlwaysFade= %i ", songsShouldFade, defaultFadeDuration, respectIndividualFadeDurations, respectIndividualFadeIn, alwaysFadeIn);
-//	[currentSongLock lock];
 	[self dumpOldSong];
 	fadeManagerState = 0;
 	NSLog (@"DBMusicPlayer: -playNextSong: old song dumped");
@@ -199,15 +199,12 @@
 
    			[[NSNotificationCenter defaultCenter] postNotificationName: kSongDidChange object: self];
 
-//			[currentSongLock unlock];
 			return YES;
 		} else {
-//			[currentSongLock unlock];
 			return [self playNextSong];
 		}
 	}
 	else {
-//		[currentSongLock unlock];
 		[self stopWithAlert: @"All of your play queues are empty"];
 		[[NSNotificationCenter defaultCenter] postNotificationName: kSongDidChange object: self];
 		return NO;
@@ -348,10 +345,6 @@
 	return currentSong;
 }
 
--(NSLock *) currentSongLock
-{
-	return currentSongLock;
-}
 
 @end
 

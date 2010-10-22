@@ -22,7 +22,8 @@
 
 - (id) init
 {
-	if (![super init])
+	self = [super init];
+	if (!self)
         return nil;
 
 	serverIsRunning = NO;

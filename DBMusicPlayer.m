@@ -28,6 +28,7 @@
 		songIsPaused = NO;
 		currentSong  = nil;
 		nextSong = nil;
+		mySongQueue = nil;
 
 		defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 		
@@ -169,7 +170,11 @@
 
 - (void) setPlayList: (PhantomSongQueue *) aPlayList
 {
-	mySongQueue = aPlayList;
+	if (mySongQueue != aPlayList) {
+		id oldSongQueue = mySongQueue;
+		mySongQueue = [aPlayList retain];
+		[oldSongQueue release];
+	}
 }
 
 - (PhantomSongQueue *) songQueue

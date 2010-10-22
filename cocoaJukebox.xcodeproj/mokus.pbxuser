@@ -52,6 +52,13 @@
 			CE1FDCCC1271128E0051058F /* PBXTextBookmark */ = CE1FDCCC1271128E0051058F /* PBXTextBookmark */;
 			CE1FDCCD1271128E0051058F /* PBXTextBookmark */ = CE1FDCCD1271128E0051058F /* PBXTextBookmark */;
 			CE1FDCCE1271128E0051058F /* PBXTextBookmark */ = CE1FDCCE1271128E0051058F /* PBXTextBookmark */;
+			CE1FDCD2127113DB0051058F /* PBXTextBookmark */ = CE1FDCD2127113DB0051058F /* PBXTextBookmark */;
+			CE1FDCD3127113DB0051058F /* PBXTextBookmark */ = CE1FDCD3127113DB0051058F /* PBXTextBookmark */;
+			CE1FDCD4127113DB0051058F /* PBXTextBookmark */ = CE1FDCD4127113DB0051058F /* PBXTextBookmark */;
+			CE1FDCD5127113DB0051058F /* PBXTextBookmark */ = CE1FDCD5127113DB0051058F /* PBXTextBookmark */;
+			CE1FDCD7127113FF0051058F /* PBXTextBookmark */ = CE1FDCD7127113FF0051058F /* PBXTextBookmark */;
+			CE1FDCD8127113FF0051058F /* PBXTextBookmark */ = CE1FDCD8127113FF0051058F /* PBXTextBookmark */;
+			CE1FDCD9127113FF0051058F /* PBXTextBookmark */ = CE1FDCD9127113FF0051058F /* PBXTextBookmark */;
 			CEC22BA71270D4BA0058EA36 = CEC22BA71270D4BA0058EA36 /* PBXBookmark */;
 			CEC22BA91270D6750058EA36 = CEC22BA91270D6750058EA36 /* PBXTextBookmark */;
 			CEC22BAA1270D6750058EA36 = CEC22BAA1270D6750058EA36 /* PBXBookmark */;
@@ -134,9 +141,9 @@
 	};
 	41BE3B5E08F452A00044E977 /* DBMusicPlayer.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1012, 4277}}";
-			sepNavSelRange = "{391, 0}";
-			sepNavVisRange = "{1691, 729}";
+			sepNavIntBoundsRect = "{{0, 0}, {1342, 4277}}";
+			sepNavSelRange = "{4598, 0}";
+			sepNavVisRange = "{6106, 800}";
 			sepNavWindowFrame = "{{50, 380}, {750, 558}}";
 		};
 	};
@@ -173,9 +180,9 @@
 		path = /Users/mokus/Projects/bondiproj/cocoaJukebox/branches/cocoaJukebox/JukeboxController.m;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1012, 2054}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1012, 2067}}";
 			sepNavSelRange = "{1732, 0}";
-			sepNavVisRange = "{1398, 491}";
+			sepNavVisRange = "{1796, 360}";
 		};
 	};
 	CE1FDCB212710F8E0051058F /* PBXTextBookmark */ = {
@@ -279,7 +286,7 @@
 		isa = PBXTextBookmark;
 		fRef = 41BE3B5E08F452A00044E977 /* DBMusicPlayer.m */;
 		rLen = 0;
-		rLoc = 9223372036854775552;
+		rLoc = 9223372036854775678;
 		rType = 0;
 	};
 	CE1FDCCE1271128E0051058F /* PBXTextBookmark */ = {
@@ -291,6 +298,76 @@
 		rType = 0;
 		vrLen = 729;
 		vrLoc = 1691;
+	};
+	CE1FDCD2127113DB0051058F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 41277D8508EB58AD00C1D4CB /* JukeboxController.h */;
+		name = "JukeboxController.h: 18";
+		rLen = 0;
+		rLoc = 298;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	CE1FDCD3127113DB0051058F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE1FDCB112710F8E0051058F /* JukeboxController.m */;
+		name = "JukeboxController.m: 51";
+		rLen = 0;
+		rLoc = 1732;
+		rType = 0;
+		vrLen = 362;
+		vrLoc = 1796;
+	};
+	CE1FDCD4127113DB0051058F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE1FDCB112710F8E0051058F /* JukeboxController.m */;
+		name = "JukeboxController.m: 51";
+		rLen = 0;
+		rLoc = 1732;
+		rType = 0;
+		vrLen = 360;
+		vrLoc = 1796;
+	};
+	CE1FDCD5127113DB0051058F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 41BE3B5E08F452A00044E977 /* DBMusicPlayer.m */;
+		name = "DBMusicPlayer.m: 26";
+		rLen = 0;
+		rLoc = 536;
+		rType = 0;
+		vrLen = 1073;
+		vrLoc = 488;
+	};
+	CE1FDCD7127113FF0051058F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 41277D8508EB58AD00C1D4CB /* JukeboxController.h */;
+		name = "JukeboxController.h: 18";
+		rLen = 0;
+		rLoc = 298;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	CE1FDCD8127113FF0051058F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE1FDCB112710F8E0051058F /* JukeboxController.m */;
+		name = "JukeboxController.m: 51";
+		rLen = 0;
+		rLoc = 1732;
+		rType = 0;
+		vrLen = 360;
+		vrLoc = 1796;
+	};
+	CE1FDCD9127113FF0051058F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 41BE3B5E08F452A00044E977 /* DBMusicPlayer.m */;
+		name = "DBMusicPlayer.m: 177";
+		rLen = 0;
+		rLoc = 4598;
+		rType = 0;
+		vrLen = 800;
+		vrLoc = 6106;
 	};
 	CE4591460D23157B007386EB /* PhantomSongQueue.h */ = {
 		uiCtxt = {

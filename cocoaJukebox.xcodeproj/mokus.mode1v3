@@ -204,7 +204,7 @@
 				<key>PBXProjectModuleGUID</key>
 				<string>CEC22BA81270D4BA0058EA36</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>JukeboxController.m</string>
+				<string>DBMusicPlayer.m</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
@@ -216,12 +216,12 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>CE1FDCCA1271128E0051058F</string>
+						<string>CE1FDCD8127113FF0051058F</string>
 						<key>history</key>
 						<array>
 							<string>CE1FDCC71271128E0051058F</string>
 							<string>CE1FDCC81271128E0051058F</string>
-							<string>CE1FDCC91271128E0051058F</string>
+							<string>CE1FDCD3127113DB0051058F</string>
 						</array>
 					</dict>
 					<key>Split1</key>
@@ -233,7 +233,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>CE1FDCCE1271128E0051058F</string>
+						<string>CE1FDCD9127113FF0051058F</string>
 						<key>history</key>
 						<array>
 							<string>CE1FDCCC1271128E0051058F</string>
@@ -386,7 +386,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CE1FDCC61271128E0051058F</string>
+										<string>CE1FDCD7127113FF0051058F</string>
 										<key>history</key>
 										<array>
 											<string>CEC22BA91270D6750058EA36</string>
@@ -588,7 +588,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>CE1FDCCF1271128E0051058F</string>
+		<string>CE1FDCD6127113DB0051058F</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>CE1FDCA91270EC660051058F</string>
 		<string>CE1FDCAA1270EC660051058F</string>

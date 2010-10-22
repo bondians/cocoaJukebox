@@ -23,41 +23,42 @@
 - (id) init
 {
 	self = [super init];
-	if (!self)
-        return nil;
+	if (self) {
+		serverIsRunning = NO;
+		songIsPaused = NO;
+		currentSong  = nil;
+		nextSong = nil;
 
-	serverIsRunning = NO;
-	songIsPaused = NO;
-	currentSong  = nil;
-	nextSong = nil;
-
-	defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
-	//defaultsController = [NSUserDefaults standardUserDefaults];
-	[self bind: @"songsShouldFade" toObject: defaultsController 
-		  withKeyPath: @"values.kFadeIsOn" options:nil];
-	[self bind: @"defaultFadeDuration" toObject: defaultsController 
-		  withKeyPath: @"values.kDefaultFadeDuration" options:nil];
-	[self bind: @"respectIndividualFadeDurations" toObject: defaultsController
-		  withKeyPath: @"values.kRespectIndividualFadeDurations" options:nil];
-	[self bind: @"respectIndividualFadeIn" toObject: defaultsController
-		  withKeyPath: @"values.kRespectSongFadeIn" options:nil];
-	[self bind: @"alwaysFadeIn" toObject: defaultsController
-		  withKeyPath: @"values.kSongAlwaysFadeIn" options:nil];
-//      observeValueForKeyPath:ofObject:change:context
-//	myError = [[NSError alloc] init];
-        fadeManagerTimer = [[NSTimer scheduledTimerWithTimeInterval: 0.1
-					target: self selector: @selector(fadeManager) userInfo: nil repeats: YES] retain];
-					
-	fadeManagerState = 0;
+		defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
+		//defaultsController = [NSUserDefaults standardUserDefaults];
+		[self bind: @"songsShouldFade" toObject: defaultsController 
+			  withKeyPath: @"values.kFadeIsOn" options:nil];
+		[self bind: @"defaultFadeDuration" toObject: defaultsController 
+			  withKeyPath: @"values.kDefaultFadeDuration" options:nil];
+		[self bind: @"respectIndividualFadeDurations" toObject: defaultsController
+			  withKeyPath: @"values.kRespectIndividualFadeDurations" options:nil];
+		[self bind: @"respectIndividualFadeIn" toObject: defaultsController
+			  withKeyPath: @"values.kRespectSongFadeIn" options:nil];
+		[self bind: @"alwaysFadeIn" toObject: defaultsController
+			  withKeyPath: @"values.kSongAlwaysFadeIn" options:nil];
+		
+		fadeManagerTimer = [[NSTimer scheduledTimerWithTimeInterval: 0.1
+						target: self selector: @selector(fadeManager) userInfo: nil repeats: YES] retain];
+						
+		fadeManagerState = 0;
+	}
 	
 	return self;
 }
 
 - (id) initWithPlayList: (PhantomSongQueue *) aPlayList
 {
-	if (![self init])
-            return nil;
-	[self setPlayList: aPlayList];
+	self = [self init];
+	
+	if (self) {
+		[self setPlayList: aPlayList];
+	}
+	
 	return self;
 }
 

@@ -212,16 +212,19 @@
 						<key>PBXProjectModuleGUID</key>
 						<string>CEC22BAE1270D6750058EA36</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>DBMusicPlayer.h</string>
+						<string>DBSong.m</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>CE1FDCE9127115CE0051058F</string>
+						<string>CE1FDD2812711BF00051058F</string>
 						<key>history</key>
 						<array>
 							<string>CE1FDCC71271128E0051058F</string>
 							<string>CE1FDCDD1271153D0051058F</string>
-							<string>CE1FDCC81271128E0051058F</string>
+							<string>CE1FDCF8127117270051058F</string>
+							<string>CE1FDD151271195B0051058F</string>
+							<string>CE1FDD161271195B0051058F</string>
+							<string>CE1FDD13127119200051058F</string>
 						</array>
 					</dict>
 					<key>Split1</key>
@@ -233,11 +236,11 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>CE1FDCEA127115CE0051058F</string>
+						<string>CE1FDD2912711BF00051058F</string>
 						<key>history</key>
 						<array>
 							<string>CE1FDCCC1271128E0051058F</string>
-							<string>CE1FDCCD1271128E0051058F</string>
+							<string>CE1FDD03127118200051058F</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -333,7 +336,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>3</integer>
+									<integer>9</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -374,7 +377,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>JukeboxController.h</string>
+								<string>JukeboxController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -382,15 +385,16 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>JukeboxController.h</string>
+										<string>JukeboxController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CE1FDCE8127115CE0051058F</string>
+										<string>CE1FDD2712711BF00051058F</string>
 										<key>history</key>
 										<array>
 											<string>CEC22BA91270D6750058EA36</string>
-											<string>CEC22BAB1270D6750058EA36</string>
+											<string>CE1FDCF5127117270051058F</string>
+											<string>CE1FDCF6127117270051058F</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -588,15 +592,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>CE1FDCEE127115CE0051058F</string>
+		<string>CE1FDD2A12711BF00051058F</string>
 		<string>CE1FDCEC127115CE0051058F</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>CE1FDCA91270EC660051058F</string>
 		<string>CE1FDCAA1270EC660051058F</string>
+		<string>CE45917C0D2318C9007386EB</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/mokus/Projects/bondiproj/cocoaJukebox/branches/cocoaJukebox/cocoaJukebox.xcodeproj</string>
-		<string>CE45917C0D2318C9007386EB</string>
 		<string>CEC22BA81270D4BA0058EA36</string>
 	</array>
 	<key>WindowString</key>
@@ -621,7 +625,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>DBMusicPlayer.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -773,10 +777,10 @@
 									<key>Frame</key>
 									<string>{{316, 0}, {378, 202}}</string>
 									<key>RubberWindowFrame</key>
-									<string>100 194 694 422 0 0 1920 1058 </string>
+									<string>209 158 694 422 0 0 1920 1058 </string>
 								</dict>
 								<key>RubberWindowFrame</key>
-								<string>100 194 694 422 0 0 1920 1058 </string>
+								<string>209 158 694 422 0 0 1920 1058 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugSessionModule</string>
@@ -810,11 +814,11 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
 			<key>WindowString</key>
-			<string>100 194 694 422 0 0 1920 1058 </string>
+			<string>209 158 694 422 0 0 1920 1058 </string>
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -938,7 +942,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {975, 474}}</string>
 								<key>RubberWindowFrame</key>
-								<string>28 514 975 515 0 0 1920 1058 </string>
+								<string>411 409 975 515 0 0 1920 1058 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -967,11 +971,11 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>28 514 975 515 0 0 1920 1058 </string>
+			<string>411 409 975 515 0 0 1920 1058 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

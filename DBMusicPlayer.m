@@ -60,7 +60,7 @@
 	// defaultsController // this is probably safe to release, but not necessary... it's theoretically a global
 	[self setPlayList: nil];
 	// currentSong // would like to 'normalize' handling of this var
-	// nextSong	// ditto
+	[self setNextSong: nil];
 	// fadeManagerTimer // what cleanup is required?  just release?  Seems like probably have to deactivate
 	
 	[super dealloc];
@@ -109,14 +109,8 @@
 			break;
 
 		case 1 :					// Preload newSong
-			nextSong = [[playlist getNextSong] retain];
-			if (nextSong) {
-				if (! [nextSong loadSong]) {
-					[nextSong release];
-					nextSong = nil;
-					break;
-				}
-			}
+			[self setNextSong: [playlist getNextSong]];
+			if (!nextSong) break;
 			fadeManagerState++;
 			break;
 
@@ -205,18 +199,14 @@
 	NSLog (@"DBMusicPlayer: -playNextSong: old song dumped");
 	if (nextSong){
 		NSLog (@"DBMusicPlayer: -playNextSong: there was a nextSong to work with %@", [nextSong key]);
-		currentSong = nextSong;
-		nextSong = nil;
+		[self setCurrentSong:nextSong];
+		[self setNextSong: nil];
 	} else {
-		currentSong = [[playlist getNextSong] retain];
+		[self setCurrentSong: [playlist getNextSong]];
 	}
 
 	if (currentSong) {
 		if ([currentSong play]) {
-			[[NSNotificationCenter defaultCenter] addObserver:self 
-				selector:@selector(QTMovieDidEndNotification:) 
-				name:QTMovieDidEndNotification object:[currentSong movie]];
-
    			[[NSNotificationCenter defaultCenter] postNotificationName: kSongDidChange object: self];
 
 			return YES;
@@ -282,7 +272,7 @@
 	if (currentSong) 
 		return [currentSong key];
 	else
-		return [NSString string];
+		return @"";
 }
 
 - (void) stopWithAlert: (NSString *) reason
@@ -339,9 +329,7 @@
 		[currentSong dumpFadeInTimer];
 		[currentSong dumpFadeOutTimer];
 		[currentSong stop];
-		[[NSNotificationCenter defaultCenter] removeObserver: self name: nil object: [currentSong movie]];
-		[currentSong release];
-		currentSong = nil;
+		[self setCurrentSong: nil];
 	}
 }
 
@@ -365,6 +353,38 @@
 	return currentSong;
 }
 
+- (void) setNextSong: (DBSong *)newSong {
+	if (nextSong != newSong) {
+		id oldSong = nextSong;
+		nextSong = [newSong retain];
+		[oldSong release];
+
+		if (nextSong != nil && ![nextSong loadSong]) {
+			[nextSong release];
+			nextSong = nil;
+		}
+	}
+}
+
+- (void) setCurrentSong: (DBSong *)newSong {
+	if (currentSong != newSong) {
+		id oldSong = currentSong;
+		currentSong = [newSong retain];
+		[[NSNotificationCenter defaultCenter] removeObserver: self name: nil object: [oldSong movie]];
+		[oldSong release];
+		
+		if (currentSong != nil)
+			if ([currentSong loadSong]) {
+				[[NSNotificationCenter defaultCenter] addObserver:self 
+														 selector:@selector(QTMovieDidEndNotification:) 
+															 name:QTMovieDidEndNotification object:[currentSong movie]];
+			} else {
+				[currentSong release];
+				currentSong = nil;
+			}
+		}
+	}
+}
 
 @end
 

@@ -58,6 +58,10 @@
 - (BOOL) serverRunning;
 - (NSString *) currentSongKey;
 - (DBSong *) currentSong;
+
+- (void) setNextSong: (DBSong *) newSong;
+- (void) setCurrentSong: (DBSong *) newSong;
+
 @end
 
 

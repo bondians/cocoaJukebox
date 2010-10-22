@@ -56,12 +56,13 @@
 	// this is a stub... realistically it's never needed because [DBMusicPlayer dealloc] means the app is over.
 	// but it still really ought to be done right.
 	
-	// things to release:
-	// defaultsController // this is probably safe to release, but not necessary... it's theoretically a global
+	[self dumpOldSong];
 	[self setPlayList: nil];
-	// currentSong // would like to 'normalize' handling of this var
 	[self setNextSong: nil];
-	// fadeManagerTimer // what cleanup is required?  just release?  Seems like probably have to deactivate
+
+	// other things to release:
+	// defaultsController // this is probably safe to release, but not necessary... it's theoretically a global
+	// fadeManagerTimer   // what cleanup is required?  just release?  Seems like probably have to deactivate
 	
 	[super dealloc];
 }

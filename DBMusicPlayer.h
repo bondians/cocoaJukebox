@@ -31,7 +31,6 @@
 	BOOL alwaysFadeIn;
 	
 	NSUserDefaultsController *defaultsController;
-	//NSUserDefaults *defaultsController;
 	
 	PhantomSongQueue *mySongQueue;
 	NSNotification *aNotification;
@@ -41,7 +40,6 @@
 	NSTimer *fadeManagerTimer;
 	
 	int fadeManagerState;
-//	NSError *myError;
 }
 
 + (id) musicPlayerWithPlayList: (PhantomSongQueue *) aPlayList;

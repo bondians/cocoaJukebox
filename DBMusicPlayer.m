@@ -30,7 +30,7 @@
 		nextSong = nil;
 
 		defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
-		//defaultsController = [NSUserDefaults standardUserDefaults];
+		
 		[self bind: @"songsShouldFade" toObject: defaultsController 
 			  withKeyPath: @"values.kFadeIsOn" options:nil];
 		[self bind: @"defaultFadeDuration" toObject: defaultsController 
@@ -64,7 +64,6 @@
 
 - (void) fadeManager
 {
-//	NSLog(@"fadeManager: %i, %i, %i, %i", serverIsRunning, songsShouldFade, currentSong, [currentSong isPlaying]);
 	if (! serverIsRunning || ! songsShouldFade || ! currentSong || ! [currentSong isPlaying]) return;
 
 	NSTimeInterval currentTime;

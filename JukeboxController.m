@@ -1,8 +1,6 @@
 #import "JukeboxController.h"
 #import "PhantomSongQueue.h"
 
-#define notificationCenter [NSNotificationCenter defaultCenter]
-
 @implementation JukeboxController
 
 + (void) initialize
@@ -59,6 +57,11 @@
 }
 
 - (IBAction) skip: (id) sender
+{
+	[self skipCurrentSong];
+}
+
+- (void) skipCurrentSong
 {
 	[myMusicPlayer skipSong];
 }
@@ -153,6 +156,12 @@
 							   name: kPlayerDidResumeFromPause object: myMusicPlayer];
 	[notificationCenter addObserver: self selector:@selector(songDidChange:) 
 							   name: kSongDidChange object: myMusicPlayer];
+	/* - (void)addObserver:(id)notificationObserver selector:(SEL)notificationSelector 
+					 name:(NSString *)notificationName 
+				   object:(NSString *)notificationSender
+	*/
+	[distributedNotificationCenter addObserver: self selector:@selector(skipCurrentSong)
+										  name: kJookieSkipCurrentSong object: nil];
 
 }
 /*

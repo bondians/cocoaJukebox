@@ -7,6 +7,10 @@
 #import "DBMusicPlayer.h"
 #import "UKPrefsPanel.h"
 
+#define kJookieSkipCurrentSong		@"jookieSkipCurrentSong"
+#define notificationCenter [NSNotificationCenter defaultCenter]
+#define distributedNotificationCenter [NSDistributedNotificationCenter defaultCenter]
+
 // debug
 // #import <Foundation/NSDebug.h>
 
@@ -46,5 +50,7 @@
 
 - (void) registerForNotifications;
 - (void) updateTimeDisplay;
+
+- (void) skipCurrentSong;
 
 @end

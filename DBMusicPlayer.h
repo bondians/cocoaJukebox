@@ -32,8 +32,7 @@
 	
 	NSUserDefaultsController *defaultsController;
 	
-	PhantomSongQueue *mySongQueue;
-	NSNotification *aNotification;
+	PhantomSongQueue *playlist;
 	DBSong *currentSong;
 	DBSong *nextSong;
 	

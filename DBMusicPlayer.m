@@ -28,7 +28,7 @@
 		songIsPaused = NO;
 		currentSong  = nil;
 		nextSong = nil;
-		mySongQueue = nil;
+		playlist = nil;
 
 		defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 		
@@ -50,6 +50,20 @@
 	}
 	
 	return self;
+}
+
+- (void) dealloc {
+	// this is a stub... realistically it's never needed because [DBMusicPlayer dealloc] means the app is over.
+	// but it still really ought to be done right.
+	
+	// things to release:
+	// defaultsController // this is probably safe to release, but not necessary... it's theoretically a global
+	[self setPlayList: nil];
+	// currentSong // would like to 'normalize' handling of this var
+	// nextSong	// ditto
+	// fadeManagerTimer // what cleanup is required?  just release?  Seems like probably have to deactivate
+	
+	[super dealloc];
 }
 
 - (id) initWithPlayList: (PhantomSongQueue *) aPlayList
@@ -95,7 +109,7 @@
 			break;
 
 		case 1 :					// Preload newSong
-			nextSong = [[mySongQueue getNextSong] retain];
+			nextSong = [[playlist getNextSong] retain];
 			if (nextSong) {
 				if (! [nextSong loadSong]) {
 					[nextSong release];
@@ -170,16 +184,16 @@
 
 - (void) setPlayList: (PhantomSongQueue *) aPlayList
 {
-	if (mySongQueue != aPlayList) {
-		id oldSongQueue = mySongQueue;
-		mySongQueue = [aPlayList retain];
+	if (playlist != aPlayList) {
+		id oldSongQueue = playlist;
+		playlist = [aPlayList retain];
 		[oldSongQueue release];
 	}
 }
 
 - (PhantomSongQueue *) songQueue
 {
-	return mySongQueue;
+	return playlist;
 }
 
 - (BOOL) playNextSong
@@ -194,7 +208,7 @@
 		currentSong = nextSong;
 		nextSong = nil;
 	} else {
-		currentSong = [[mySongQueue getNextSong] retain];
+		currentSong = [[playlist getNextSong] retain];
 	}
 
 	if (currentSong) {

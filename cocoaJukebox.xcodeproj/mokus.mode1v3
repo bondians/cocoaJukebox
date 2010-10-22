@@ -212,16 +212,16 @@
 						<key>PBXProjectModuleGUID</key>
 						<string>CEC22BAE1270D6750058EA36</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>JukeboxController.m</string>
+						<string>DBMusicPlayer.h</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>CE1FDCD8127113FF0051058F</string>
+						<string>CE1FDCE9127115CE0051058F</string>
 						<key>history</key>
 						<array>
 							<string>CE1FDCC71271128E0051058F</string>
+							<string>CE1FDCDD1271153D0051058F</string>
 							<string>CE1FDCC81271128E0051058F</string>
-							<string>CE1FDCD3127113DB0051058F</string>
 						</array>
 					</dict>
 					<key>Split1</key>
@@ -233,7 +233,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>CE1FDCD9127113FF0051058F</string>
+						<string>CE1FDCEA127115CE0051058F</string>
 						<key>history</key>
 						<array>
 							<string>CE1FDCCC1271128E0051058F</string>
@@ -253,7 +253,7 @@
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>388 197 1071 750 0 0 1920 1058 </string>
+				<string>405 142 1071 750 0 0 1920 1058 </string>
 			</dict>
 		</dict>
 	</array>
@@ -386,7 +386,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CE1FDCD7127113FF0051058F</string>
+										<string>CE1FDCE8127115CE0051058F</string>
 										<key>history</key>
 										<array>
 											<string>CEC22BA91270D6750058EA36</string>
@@ -588,14 +588,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>CE1FDCD6127113DB0051058F</string>
+		<string>CE1FDCEE127115CE0051058F</string>
+		<string>CE1FDCEC127115CE0051058F</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>CE1FDCA91270EC660051058F</string>
 		<string>CE1FDCAA1270EC660051058F</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>CE45917C0D2318C9007386EB</string>
 		<string>/Users/mokus/Projects/bondiproj/cocoaJukebox/branches/cocoaJukebox/cocoaJukebox.xcodeproj</string>
+		<string>CE45917C0D2318C9007386EB</string>
 		<string>CEC22BA81270D4BA0058EA36</string>
 	</array>
 	<key>WindowString</key>
@@ -1412,33 +1413,40 @@
 			<integer>0</integer>
 		</dict>
 		<dict>
+			<key>FirstTimeWindowDisplayed</key>
+			<false/>
 			<key>Identifier</key>
 			<string>windowTool.refactoring</string>
 			<key>IncludeInToolsMenu</key>
 			<integer>0</integer>
+			<key>IsVertical</key>
+			<true/>
 			<key>Layout</key>
 			<array>
 				<dict>
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<integer>1</integer>
+							<key>ContentConfiguration</key>
+							<dict>
+								<key>PBXProjectModuleGUID</key>
+								<string>CE1FDCEB127115CE0051058F</string>
+							</dict>
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{0, 0}, {500, 335}</string>
+								<string>{{0, 0}, {500, 315}}</string>
 								<key>RubberWindowFrame</key>
-								<string>{0, 0}, {500, 335}</string>
+								<string>259 565 500 356 0 0 1920 1058 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCRefactoringModule</string>
 							<key>Proportion</key>
-							<string>100%</string>
+							<string>315pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>100%</string>
+					<string>315pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -1447,8 +1455,20 @@
 			<array>
 				<string>XCRefactoringModule</string>
 			</array>
+			<key>StatusbarIsVisible</key>
+			<true/>
+			<key>TableOfContents</key>
+			<array>
+				<string>CE1FDCEC127115CE0051058F</string>
+				<string>CE1FDCED127115CE0051058F</string>
+				<string>CE1FDCEB127115CE0051058F</string>
+			</array>
 			<key>WindowString</key>
-			<string>200 200 500 356 0 0 1920 1200 </string>
+			<string>259 565 500 356 0 0 1920 1058 </string>
+			<key>WindowToolGUID</key>
+			<string>CE1FDCEC127115CE0051058F</string>
+			<key>WindowToolIsVisible</key>
+			<false/>
 		</dict>
 	</array>
 </dict>

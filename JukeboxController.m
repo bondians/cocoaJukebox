@@ -46,7 +46,7 @@
 	// end debug stuff
 
 	mySongQueue = [[PhantomSongQueue alloc] init];
-	myMusicPlayer = [[DBMusicPlayer musicPlayerWithPlayList: mySongQueue] retain];
+	myMusicPlayer = [[DBMusicPlayer alloc] initWithPlayList: mySongQueue];
 	[self registerForNotifications];
 
 	durationTimer = [[NSTimer scheduledTimerWithTimeInterval: 0.5

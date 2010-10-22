@@ -46,7 +46,6 @@
 	// end debug stuff
 
 	mySongQueue = [[PhantomSongQueue alloc] init];
-	//[mySongQueue setProgressIndicator: playListLoader];
 	myMusicPlayer = [[DBMusicPlayer musicPlayerWithPlayList: mySongQueue] retain];
 	[self registerForNotifications];
 
@@ -91,7 +90,7 @@
 	[startStop setTitle: @"Start"];
 }
 
-- (NSString *) doubleToTime: (double) time
++ (NSString *) doubleToTime: (double) time
 {
 	int itime;
 	int minutes, seconds;
@@ -114,7 +113,7 @@
 		[dbKeyDisplay setStringValue: [[myMusicPlayer currentSong] key]];
 		[songNameDisplay setStringValue: [[myMusicPlayer currentSong] title]];
 		[songArtistDisplay setStringValue: [[myMusicPlayer currentSong] artist]];
-		[songTimeDisplay setStringValue: [self doubleToTime: playTime]];
+		[songTimeDisplay setStringValue: [JukeboxController doubleToTime: playTime]];
 	}
 	else {
 		[dbKeyDisplay setStringValue: @"000000"];
@@ -136,7 +135,7 @@
 		if ([myMusicPlayer currentSong]) {
 			QTGetTimeInterval([[[myMusicPlayer currentSong] movie] currentTime], &currentTime);
 			QTGetTimeInterval([[[myMusicPlayer currentSong] movie] duration], &playTime);
-			[songTimeDisplay setStringValue: [self doubleToTime: playTime - currentTime]];
+			[songTimeDisplay setStringValue: [JukeboxController doubleToTime: playTime - currentTime]];
 		}
 }
 

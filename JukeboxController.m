@@ -53,6 +53,11 @@
 
 - (IBAction) playerStartStop: (id) sender
 {
+	[self playerStartStop];
+}
+
+- (void) playerStartStop
+{
 	[myMusicPlayer toggleStartStop];
 }
 
@@ -67,6 +72,11 @@
 }
 
 - (IBAction) pause: (id) sender {
+	[self playerPause];
+}
+
+- (void) playerPause
+{
 	[myMusicPlayer pauseSong];
 }
 
@@ -145,7 +155,7 @@
 - (void) registerForNotifications
 {
 	//- (void)addObserver:(id)anObserver selector:(SEL)aSelector name:(NSString *)notificationName object:(id)anObject
-	
+// Local Notifications
 	[notificationCenter addObserver: self selector:@selector(playerDidStart:) 
 							   name: kPlayerDidStart object: myMusicPlayer];
 	[notificationCenter addObserver: self selector:@selector(playerDidStop:) 
@@ -156,12 +166,13 @@
 							   name: kPlayerDidResumeFromPause object: myMusicPlayer];
 	[notificationCenter addObserver: self selector:@selector(songDidChange:) 
 							   name: kSongDidChange object: myMusicPlayer];
-	/* - (void)addObserver:(id)notificationObserver selector:(SEL)notificationSelector 
-					 name:(NSString *)notificationName 
-				   object:(NSString *)notificationSender
-	*/
+// Distributed Notifications 
 	[distributedNotificationCenter addObserver: self selector:@selector(skipCurrentSong)
-										  name: kJookieSkipCurrentSong object: nil];
+										  name: kJookiePlayerSkip object: nil];
+	[distributedNotificationCenter addObserver: self selector:@selector(playerStartStop)
+										  name: kJookiePlayerStartStop object: nil];
+	[distributedNotificationCenter addObserver: self selector:@selector(playerPause)
+										  name: kJookiePlayerPause object: nil];
 
 }
 /*

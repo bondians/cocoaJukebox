@@ -240,8 +240,8 @@
 - (void) toggleStartStop
 {
 	if (songIsPaused) {
-		songIsPaused = NO;
-		[[NSNotificationCenter defaultCenter] postNotificationName: kPlayerDidResumeFromPause object: self];
+		[self pauseSong];
+		return;
 	}
 
 	switch (serverIsRunning) {
@@ -367,15 +367,19 @@
 	}
 }
 
-- (void) setCurrentSong: (DBSong *)newSong {
-	if (currentSong != newSong) {
+- (void) setCurrentSong: (DBSong *)newSong 
+{
+	if (currentSong != newSong) 
+	{
 		id oldSong = currentSong;
 		currentSong = [newSong retain];
 		[[NSNotificationCenter defaultCenter] removeObserver: self name: nil object: [oldSong movie]];
 		[oldSong release];
 		
-		if (currentSong != nil)
-			if ([currentSong loadSong]) {
+		if (currentSong != nil) 
+		{
+			if ([currentSong loadSong])
+			{
 				[[NSNotificationCenter defaultCenter] addObserver:self 
 														 selector:@selector(QTMovieDidEndNotification:) 
 															 name:QTMovieDidEndNotification object:[currentSong movie]];

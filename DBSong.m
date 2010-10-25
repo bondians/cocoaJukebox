@@ -152,16 +152,21 @@
 
 - (void) updateVolume
 {
-    double currentTime = [self currentTime];
-    float computed = [self computedVolume];
+    double currentTime;
+	double timeLeft;
+    float computed;
     float newVolume = 0.0;
 
-    if (myMovie)
+    if (myMovie != nil)
     {
-        if (currentTime <= songFadeInDuration)
+		currentTime = [self currentTime];
+		timeLeft = [self timeLeft];
+		computed = [self computedVolume];
+        if (songFadeInDuration > 0.0 && currentTime <= songFadeInDuration)
         {
             newVolume = computed * currentTime / songFadeInDuration;
-        } else if (currentTime >= (fadeEndTime - currentTime))
+        } 
+		else if (songFadeOutDuration > 0.0 && songFadeOutDuration >= timeLeft)
         {
             newVolume = computed * (fadeEndTime - currentTime) / songFadeOutDuration;
         }
@@ -174,33 +179,9 @@
         {
             newVolume = computed;
         }
-        [myMovie setVolume: newVolume];
+		NSLog(@"updating volume for: %@ from:%f to: %f",title, [myMovie volume], newVolume);
+	[myMovie setVolume: newVolume];
     }
-/*
-- (void) fadeOutControl
-{
-        NSTimeInterval currentTime;
-    float newVolume;
-
-        QTGetTimeInterval([myMovie currentTime], &currentTime);
-
-    newVolume = [self computedVolume] * (fadeEndTime - currentTime) / songFadeOutDuration;
-
-//  if (newVolume < 0.0) newVolume = 0.0;
-    if (newVolume > myVolume) newVolume = myVolume;
-
-    if (newVolume <= 0.01) {
-        [self dumpFadeOutTimer];
-        NSLog (@"fadeOutControl: Fade-out completed.");
-        newVolume = 0.0;
-        [[NSNotificationCenter defaultCenter]
-            postNotificationName: kDBSongDidEndNotification
-            object: self];
-    }
-    [myMovie setVolume: newVolume];
-}
-
-*/
 }
 
 - (void) stop

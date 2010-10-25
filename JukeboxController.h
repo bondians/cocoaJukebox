@@ -10,6 +10,8 @@
 #define kJookiePlayerSkip			@"jookiePlayerSkip"
 #define kJookiePlayerStartStop		@"jookiePlayerStartStop"
 #define kJookiePlayerPause			@"jookiePlayerPause"
+#define kJookiePlayerSetVolume		@"jookiePlayerSetVolume"
+
 
 #define notificationCenter [NSNotificationCenter defaultCenter]
 #define distributedNotificationCenter [NSDistributedNotificationCenter defaultCenter]

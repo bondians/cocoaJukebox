@@ -15,6 +15,7 @@
 
 - (void) dumpFadeInTimer;
 - (void) dumpFadeOutTimer;
+- (void) dumpUpdateVolumeTimer;
 
 @end
 
@@ -23,6 +24,7 @@
 - (id) init
 {
 	if ((self = [super init]) != nil) {
+		defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 		key = nil;
 		title = nil;
 		artist = nil;
@@ -41,6 +43,8 @@
 		fadeEndTime = 0.0;
 		fadeOutTimer = nil;
 		fadeInTimer = nil;
+		[self bind: @"masterVolume" toObject: defaultsController 
+	   withKeyPath: @"values.kMasterVolume" options:nil];
 	}
 
 	return self;
@@ -79,8 +83,10 @@
 - (void) dealloc {
 	[self dumpFadeInTimer];
 	[self dumpFadeOutTimer];
+	[self dumpUpdateVolumeTimer];
 	[myMovie stop];
 	[myMovie release];
+	[self unbind: @"masterVolume"];
 //	[myMovie autorelease];
 	[key release];
 	[title release];
@@ -129,11 +135,11 @@
 	QTGetTimeInterval([myMovie currentTime], &currentTime);
 
     if (currentTime <= songFadeInDuration) {
-        newVolume = myVolume * currentTime / songFadeInDuration;
+        newVolume = [self computedVolume] * currentTime / songFadeInDuration;
         [myMovie setVolume: newVolume];
     }
     else {
-        [myMovie setVolume: myVolume];
+        [self updateVolume];
         [self dumpFadeInTimer];
         NSLog (@"fadeInControl: Fade-in completed.");
     }
@@ -145,7 +151,7 @@
     double songDuration;
     double currentTime;
 	isFading = YES;
-
+	[self dumpUpdateVolumeTimer];
     if (fadeDuration <= 0.01) {
         [myMovie setVolume: 0.0];
         [[NSNotificationCenter defaultCenter]
@@ -183,6 +189,14 @@
 		fadeOutTimer = nil;
 	}
 }
+- (void) dumpUpdateVolumeTimer
+{
+	if (updateVolumeTimer){
+		if ([updateVolumeTimer isValid]) [updateVolumeTimer invalidate];
+		if (updateVolumeTimer) [updateVolumeTimer release];
+		updateVolumeTimer = nil;
+	}
+}
 
 - (void) fadeOutControl
 {
@@ -191,7 +205,7 @@
 
 	QTGetTimeInterval([myMovie currentTime], &currentTime);
 
-    newVolume = myVolume * (fadeEndTime - currentTime) / songFadeOutDuration;
+    newVolume = [self computedVolume] * (fadeEndTime - currentTime) / songFadeOutDuration;
 
 //  if (newVolume < 0.0) newVolume = 0.0;
     if (newVolume > myVolume) newVolume = myVolume;
@@ -209,16 +223,21 @@
 
 - (BOOL) play
 {
+	if (! updateVolumeTimer)
+	{
+		updateVolumeTimer = [[NSTimer scheduledTimerWithTimeInterval: 0.1
+		target: self selector: @selector(updateVolume) userInfo: nil repeats: YES] retain];
+	}
     if (isPlaying) {
         [self dumpFadeInTimer];
-        [myMovie setVolume: myVolume];
+        [self updateVolume];
         return YES;
     }
 
 	
 	if ([self loadSong])
 	{
-		[myMovie setVolume: myVolume];
+		[self updateVolume];
 		[myMovie play];
 		isPlaying = YES;
 		return YES;
@@ -320,6 +339,21 @@
 	[postQueueKey release];
 	postQueueKey = aKey;
 	[postQueueKey retain];
+}
+- (float) computedVolume
+{
+	return (myVolume * masterVolume);
+}
+
+- (void) updateVolume
+{
+	if (! [self isFading])
+	{
+		if (myMovie)
+		{
+			[myMovie setVolume: [self computedVolume]];
+		}
+	}
 }
 
 - (float) volume

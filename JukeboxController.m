@@ -17,6 +17,9 @@
 	[appDefaults setValue: @"http://127.0.0.1:3000"			forKey: @"kUrlRoot"];
 	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kFadeIsOn"];
 	[appDefaults setValue: @"6.0"							forKey: @"kDefaultFadeDuration"];
+	[appDefaults setValue: @"1.0"							forKey: @"kMasterVolume"];
+	[appDefaults setValue: @"1.0"							forKey: @"kMaxMasterVolume"];
+	[appDefaults setValue: @"0.0"							forKey: @"kMinMasterVolume"];
 	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectIndividualFadeDurations"];
 	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectSongHinting"];
 	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectSongFadeIn"];
@@ -173,6 +176,8 @@
 										  name: kJookiePlayerStartStop object: nil];
 	[distributedNotificationCenter addObserver: self selector:@selector(playerPause)
 										  name: kJookiePlayerPause object: nil];
+	[distributedNotificationCenter addObserver: self selector:@selector(setMasterVolume)
+										  name: kJookiePlayerSetVolume object: nil];
 
 }
 /*

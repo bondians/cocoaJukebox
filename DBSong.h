@@ -34,6 +34,8 @@
 	NSString *preQueueKey;
 	NSString *postQueueKey;
 	
+	NSUserDefaultsController *defaultsController;
+	
 	BOOL isPlaying;
 	BOOL songShouldFadeIn;
 	BOOL isFading;
@@ -42,8 +44,10 @@
 	double songFadeOutDuration;
 	double fadeEndTime;
 	float myVolume;
+	float masterVolume;
 	NSTimer *fadeOutTimer;
 	NSTimer *fadeInTimer;
+	NSTimer *updateVolumeTimer;
 	//NSTimer *testTimer;
 	
 	BOOL songIsLoaded;
@@ -89,6 +93,9 @@
 //use these for getting and setting movie volumes, not direct movie acess
 - (float) volume;
 - (void) setVolume: (float) vol;
+- (float) computedVolume;
+- (void) updateVolume;
+
 - (BOOL) isPlaying;
 - (BOOL) isFading;
 - (void) dumpFadeInTimer;

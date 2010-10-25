@@ -153,7 +153,6 @@
 - (void) updateVolume
 {
     double currentTime = [self currentTime];
-    double timeLeft    = [self timeLeft];
     float computed = [self computedVolume];
     float newVolume = 0.0;
 

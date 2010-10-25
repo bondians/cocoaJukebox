@@ -330,8 +330,6 @@
 {
     if (currentSong) {
         [currentSong stop];
-        // ##################### why was release not here?
-        //[currentSong release];
         [self setCurrentSong: nil];
     }
 }

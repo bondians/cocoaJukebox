@@ -37,10 +37,14 @@
 	IBOutlet NSTextField *dbKeyDisplay;
 	IBOutlet UKPrefsPanel *prefsPanel;
 	NSTimer *durationTimer;
+	float masterVolume;
+	NSUserDefaultsController *defaultsController;
+	NSUserDefaults *myDefaults;
 }
 
 + (void) initialize;
 
+- (id) init;
 - (void) applicationDidFinishLaunching: (NSNotification *) aNotification;
 - (IBAction) playerStartStop: (id) sender;
 - (IBAction) pause: (id) sender;
@@ -52,6 +56,7 @@
 - (void) playerDidStart: (NSNotification *) aNotification;
 - (void) playerDidStop: (NSNotification *) aNotification;
 - (void) songDidChange: (NSNotification *) aNotification;
+- (void) mySetMasterVolume: (NSNotification *) aNotification;
 
 - (void) registerForNotifications;
 - (void) updateTimeDisplay;

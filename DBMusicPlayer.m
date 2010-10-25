@@ -30,7 +30,7 @@
 		nextSong = nil;
 		playlist = nil;
 
-		defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
+		NSUserDefaultsController *defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 		
 		[self bind: @"songsShouldFade" toObject: defaultsController 
 			  withKeyPath: @"values.kFadeIsOn" options:nil];
@@ -45,6 +45,8 @@
 		
 		fadeManagerTimer = [[NSTimer scheduledTimerWithTimeInterval: 0.1
 						target: self selector: @selector(fadeManager) userInfo: nil repeats: YES] retain];
+		updateVolumeTimer = [[NSTimer scheduledTimerWithTimeInterval: 0.1
+			target: self selector: @selector(updateVolume) userInfo: nil repeats: YES] retain];
 						
 		fadeManagerState = 0;
 	}
@@ -342,6 +344,11 @@
 - (void) setVolume: (float) volume
 {
 	[[currentSong movie] setVolume: volume];
+}
+
+- (void) updateVolume
+{
+	[currentSong updateVolume];
 }
 
 - (float) getVolume

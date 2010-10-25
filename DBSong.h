@@ -33,9 +33,7 @@
 	
 	NSString *preQueueKey;
 	NSString *postQueueKey;
-	
-	NSUserDefaultsController *defaultsController;
-	
+		
 	BOOL isPlaying;
 	BOOL songShouldFadeIn;
 	BOOL isFading;
@@ -49,6 +47,8 @@
 	NSTimer *fadeInTimer;
 	NSTimer *updateVolumeTimer;
 	//NSTimer *testTimer;
+	
+	NSUserDefaultsController *defaultsController;
 	
 	BOOL songIsLoaded;
 	QTMovie *myMovie;

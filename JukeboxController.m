@@ -32,6 +32,16 @@
 	[defaults synchronize];
 	
 }
+- (id) init
+{
+	if ((self = [super init]) != nil) {
+		// UserDefaults
+		defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
+		[self bind: @"masterVolume" toObject: defaultsController 
+	   withKeyPath: @"values.kMasterVolume" options:nil];
+	}
+	return self;
+}
 
 - ( void ) awakeFromNib
 {
@@ -106,6 +116,15 @@
 	[startStop setTitle: @"Start"];
 }
 
+- (void) mySetMasterVolume: (NSNotification *) aNotification
+{
+	NSDictionary *dict;
+	myDefaults = [NSUserDefaults standardUserDefaults];
+	dict = [aNotification userInfo];
+	float newVol = [[dict valueForKey: @"volume"] floatValue];
+	[myDefaults setFloat: newVol forKey: @"kMasterVolume"];
+}
+
 + (NSString *) doubleToTime: (double) time
 {
 	int itime;
@@ -176,7 +195,7 @@
 										  name: kJookiePlayerStartStop object: nil];
 	[distributedNotificationCenter addObserver: self selector:@selector(playerPause)
 										  name: kJookiePlayerPause object: nil];
-	[distributedNotificationCenter addObserver: self selector:@selector(setMasterVolume)
+	[distributedNotificationCenter addObserver: self selector:@selector(mySetMasterVolume:)
 										  name: kJookiePlayerSetVolume object: nil];
 
 }

@@ -29,14 +29,13 @@
 	BOOL respectIndividualFadeDurations;
 	BOOL respectIndividualFadeIn;
 	BOOL alwaysFadeIn;
-	
-	NSUserDefaultsController *defaultsController;
-	
+		
 	PhantomSongQueue *playlist;
 	DBSong *currentSong;
 	DBSong *nextSong;
 	
 	NSTimer *fadeManagerTimer;
+	NSTimer *updateVolumeTimer;
 	
 	int fadeManagerState;
 }
@@ -55,6 +54,7 @@
 - (void) pauseSong;
 - (void) setVolume: (float) volume;
 - (float) getVolume;
+- (void) updateVolume;
 - (BOOL) serverRunning;
 - (NSString *) currentSongKey;
 - (DBSong *) currentSong;

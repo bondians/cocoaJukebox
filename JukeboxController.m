@@ -123,6 +123,7 @@
 	dict = [aNotification userInfo];
 	float newVol = [[dict valueForKey: @"volume"] floatValue];
 	[myDefaults setFloat: newVol forKey: @"kMasterVolume"];
+        [myDefaults synchronize];
 }
 
 + (NSString *) doubleToTime: (double) time

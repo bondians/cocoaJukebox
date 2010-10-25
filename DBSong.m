@@ -15,75 +15,75 @@
 
 - (id) init
 {
-	if ((self = [super init]) != nil) {
-		key = nil;
-		title = nil;
-		artist = nil;
-		album = nil;
-		path = nil;
-		myMovie = nil;
-		preQueueKey = nil;
-		postQueueKey = nil;
-		songShouldFadeIn = YES;
-		isPlaying = NO;
-		isFading = NO;
-		mySongFadeDuration = -1;
-		myVolume = 0.7;
-		songFadeInDuration = 0.0;
-		songFadeOutDuration = 0.0;
-		fadeEndTime = 0.0;
-		defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
-		[self bind: @"masterVolume" toObject: defaultsController 
-	   withKeyPath: @"values.kMasterVolume" options:nil];
-	}
+    if ((self = [super init]) != nil) {
+        key = nil;
+        title = nil;
+        artist = nil;
+        album = nil;
+        path = nil;
+        myMovie = nil;
+        preQueueKey = nil;
+        postQueueKey = nil;
+        songShouldFadeIn = YES;
+        isPlaying = NO;
+        isFading = NO;
+        mySongFadeDuration = -1;
+        myVolume = 0.7;
+        songFadeInDuration = 0.0;
+        songFadeOutDuration = 0.0;
+        fadeEndTime = 0.0;
+        defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
+        [self bind: @"masterVolume" toObject: defaultsController 
+       withKeyPath: @"values.kMasterVolume" options:nil];
+    }
 
-	return self;
+    return self;
 }
 
 
 - (id) initWithKey: (NSString *) aKey title: (NSString *) aTitle 
-		   artist: (NSString *) anArtist album: (NSString *) anAlbum path: (NSString *) aPath
+           artist: (NSString *) anArtist album: (NSString *) anAlbum path: (NSString *) aPath
 {
-	if (! [self init])
-		return nil;
+    if (! [self init])
+        return nil;
 
-	key =    [aKey retain];
-	title =  [aTitle retain];
-	artist = [anArtist retain];
-	album =  [anAlbum retain];
-	path =   [aPath retain];
+    key =    [aKey retain];
+    title =  [aTitle retain];
+    artist = [anArtist retain];
+    album =  [anAlbum retain];
+    path =   [aPath retain];
 
-	return self;
+    return self;
 }
 
 - (BOOL) loadSong
 {
-	NSLog(@"\n Loadsong again?\n");
-	if (myMovie) 
-		return (myMovie != nil);
-	myMovie = [[QTMovie alloc] initWithFile: [self path] error: nil];
-	
-	//[myMovie play];
-	//[myMovie stop];
-	//NSLog(@"Title: %@\n string duration: %@, string currentTime: %@",[self title], QTStringFromTime([myMovie duration]), QTStringFromTime([myMovie currentTime]));
-	
-	return (myMovie != nil);
+    NSLog(@"\n Loadsong again?\n");
+    if (myMovie) 
+        return (myMovie != nil);
+    myMovie = [[QTMovie alloc] initWithFile: [self path] error: nil];
+    
+    //[myMovie play];
+    //[myMovie stop];
+    //NSLog(@"Title: %@\n string duration: %@, string currentTime: %@",[self title], QTStringFromTime([myMovie duration]), QTStringFromTime([myMovie currentTime]));
+    
+    return (myMovie != nil);
 }
 
 - (void) dealloc {
-	[self unbind: @"masterVolume"];
-//	[myMovie autorelease];
-	[key release];
-	[title release];
-	[artist release];
-	[album release];
-	[path release];
-	[preQueueKey release];
-	[postQueueKey release];
-	[defaultsController release];
-	[myMovie stop];
-	[myMovie release];
-	[super dealloc];
+    [self unbind: @"masterVolume"];
+//    [myMovie autorelease];
+    [key release];
+    [title release];
+    [artist release];
+    [album release];
+    [path release];
+    [preQueueKey release];
+    [postQueueKey release];
+    [defaultsController release];
+    [myMovie stop];
+    [myMovie release];
+    [super dealloc];
 }
 
 - (BOOL) play
@@ -92,16 +92,16 @@
         return YES;
     }
 
-	
-	if ([self loadSong])
-	{
-		[myMovie play];
-		isPlaying = YES;
-		return YES;
-	}
+    
+    if ([self loadSong])
+    {
+        [myMovie play];
+        isPlaying = YES;
+        return YES;
+    }
 
-	isPlaying = NO;
-	return NO;
+    isPlaying = NO;
+    return NO;
 }
 
 - (BOOL) startPlaybackWithFade: (double) fadeInTime
@@ -117,14 +117,14 @@
         return YES;
     }
 
-	return NO;
+    return NO;
 }
 
 - (void) fadeOutNow: (bool) immediatly length: (double) fadeDuration
 {
     double songDuration;
     double currentTime;
-	isFading = YES;
+    isFading = YES;
     if (fadeDuration <= 0.01) {
         [myMovie setVolume: 0.0];
         [[NSNotificationCenter defaultCenter]
@@ -153,19 +153,18 @@
 - (void) updateVolume
 {
     double currentTime;
-    double timeLeft;
     float computed;
     float newVolume = 0.0;
 
     if (myMovie != nil)
     {
         currentTime = [self currentTime];
-        timeLeft = [self timeLeft];
         computed = [self computedVolume];
         if (songFadeInDuration > 0.0 && currentTime <= songFadeInDuration)
         {
-            newVolume = computed * currentTime / songFadeInDuration; } 
-            else if (songFadeOutDuration > 0.0 && songFadeOutDuration >= timeLeft)
+            newVolume = computed * currentTime / songFadeInDuration;
+        }
+        else if (songFadeOutDuration > 0.0 && fadeEndTime > 0.0 && songFadeOutDuration >= fadeEndTime)
         {
             newVolume = computed * (fadeEndTime - currentTime) / songFadeOutDuration;
         }
@@ -271,59 +270,59 @@
 }
 - (void) setPostQueueKey: (NSString *) aKey
 {
-	[postQueueKey release];
-	postQueueKey = aKey;
-	[postQueueKey retain];
+    [postQueueKey release];
+    postQueueKey = aKey;
+    [postQueueKey retain];
 }
 
 - (float) computedVolume
 {
-	return (myVolume * masterVolume);
+    return (myVolume * masterVolume);
 }
 
 - (float) volume
 {
-	return myVolume;
+    return myVolume;
 }
 
 - (void) setVolume: (float) vol
 {
-	if (myMovie) [myMovie setVolume: vol];
-	myVolume = vol;
+    if (myMovie) [myMovie setVolume: vol];
+    myVolume = vol;
 }
 
 - (BOOL) songShouldFadeIn
 {
-	return songShouldFadeIn;
+    return songShouldFadeIn;
 }
 
 - (void) setSongShouldFadeIn: (BOOL) aBool
 {
-	songShouldFadeIn = aBool;
+    songShouldFadeIn = aBool;
 }
 
 - (void) setSongFadeDuration: (double) duration
 {
-	mySongFadeDuration = duration;
+    mySongFadeDuration = duration;
 }
 
 - (double) songFadeDuration
 {
-	return mySongFadeDuration;
+    return mySongFadeDuration;
 }
 
 - (int) hash
 {
-	return [[self key] intValue];
+    return [[self key] intValue];
 }
 
 - (BOOL) isEqual: (id) anObject
 {
-	BOOL Equal = NO;
+    BOOL Equal = NO;
 
-	if ([[self key] isEqual: [anObject key]]) Equal = YES;
+    if ([[self key] isEqual: [anObject key]]) Equal = YES;
 
-	return Equal;
+    return Equal;
 }
 
 - (double) currentTime
@@ -339,61 +338,61 @@
 
 - (double) timeLeft
 {
-	if (myMovie) {
-		NSTimeInterval currentTime;
-		NSTimeInterval duration;
+    if (myMovie) {
+        NSTimeInterval currentTime;
+        NSTimeInterval duration;
 
-		QTGetTimeInterval([myMovie duration], &duration);
-		QTGetTimeInterval([myMovie currentTime], &currentTime);
-		return duration-currentTime;
-	}
+        QTGetTimeInterval([myMovie duration], &duration);
+        QTGetTimeInterval([myMovie currentTime], &currentTime);
+        return duration-currentTime;
+    }
 
-	return kNoSong;
+    return kNoSong;
 }
 
 - (double) timeToFade
-{	
-	if (myMovie) {
-		NSTimeInterval currentTime;
-		NSTimeInterval duration;
+{    
+    if (myMovie) {
+        NSTimeInterval currentTime;
+        NSTimeInterval duration;
 
-		QTGetTimeInterval([myMovie duration], &duration);
-		QTGetTimeInterval([myMovie currentTime], &currentTime);
-		return duration - currentTime - mySongFadeDuration;
-	}
+        QTGetTimeInterval([myMovie duration], &duration);
+        QTGetTimeInterval([myMovie currentTime], &currentTime);
+        return duration - currentTime - mySongFadeDuration;
+    }
 
-	return kNoSong;
+    return kNoSong;
 }
 
 - (double) halfTimeToFade
 {
-	if (myMovie) {
-		NSTimeInterval currentTime;
-		NSTimeInterval duration;
+    if (myMovie) {
+        NSTimeInterval currentTime;
+        NSTimeInterval duration;
 
-		QTGetTimeInterval([myMovie duration], &duration);
-		QTGetTimeInterval([myMovie currentTime], &currentTime);
-		return duration - currentTime - (mySongFadeDuration / 2);
-	}
+        QTGetTimeInterval([myMovie duration], &duration);
+        QTGetTimeInterval([myMovie currentTime], &currentTime);
+        return duration - currentTime - (mySongFadeDuration / 2);
+    }
 
-	return kNoSong;
+    return kNoSong;
 }
 
 -(BOOL) isPlaying
 {
-	return isPlaying;
+    return isPlaying;
 }
 -(BOOL) isFading
 {
-	return isFading;
+    return isFading;
 }
 
 //KVC Stuff
 - (id) valueForKey: (NSString *) someKey
 {
-	if ([someKey isEqualToString: @"key"] || [someKey isEqualToString: @"Key"])
-		return key;
-	return key;
+    if ([someKey isEqualToString: @"key"] || [someKey isEqualToString: @"Key"])
+        return key;
+    return key;
 }
 
 

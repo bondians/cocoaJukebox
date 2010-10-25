@@ -153,20 +153,19 @@
 - (void) updateVolume
 {
     double currentTime;
-	double timeLeft;
+    double timeLeft;
     float computed;
     float newVolume = 0.0;
 
     if (myMovie != nil)
     {
-		currentTime = [self currentTime];
-		timeLeft = [self timeLeft];
-		computed = [self computedVolume];
+        currentTime = [self currentTime];
+        timeLeft = [self timeLeft];
+        computed = [self computedVolume];
         if (songFadeInDuration > 0.0 && currentTime <= songFadeInDuration)
         {
-            newVolume = computed * currentTime / songFadeInDuration;
-        } 
-		else if (songFadeOutDuration > 0.0 && songFadeOutDuration >= timeLeft)
+            newVolume = computed * currentTime / songFadeInDuration; } 
+            else if (songFadeOutDuration > 0.0 && songFadeOutDuration >= timeLeft)
         {
             newVolume = computed * (fadeEndTime - currentTime) / songFadeOutDuration;
         }
@@ -179,97 +178,96 @@
         {
             newVolume = computed;
         }
-		NSLog(@"updating volume for: %@ from:%f to: %f",title, [myMovie volume], newVolume);
-	[myMovie setVolume: newVolume];
+        NSLog(@"updating volume for: %@ from:%f to: %f",title, [myMovie volume], newVolume);
+        [myMovie setVolume: newVolume];
     }
 }
 
 - (void) stop
 {
-	[myMovie stop];
-	isPlaying = NO;
+    [myMovie stop];
+    isPlaying = NO;
 }
 
 - (QTMovie *) movie
 {
-	return myMovie;
+    return myMovie;
 }
 
 - (NSString *) key
 {
-	return key;
+    return key;
 }
 
 - (void) setKey: (NSString *) aKey
 {
-	[key release];
-	key = aKey;
-	[key retain];
+    [key release];
+    key = aKey;
+    [key retain];
 }
 
 - (NSString *) title
 {
-	return title;
+    return title;
 }
 
 - (void) setTitle: (NSString *) aTitle
 {
-	[title release];
-	title = aTitle;
-	[title retain];
+    [title release];
+    title = aTitle;
+    [title retain];
 }
 
 - (NSString *) artist
 {
-	return artist;
+    return artist;
 }
 
 - (void) setArtist: (NSString *) anArtist
 {
-	[artist release];
-	artist = anArtist;
-	[artist retain];
+    [artist release];
+    artist = anArtist;
+    [artist retain];
 }
 
 - (NSString *) album
 {
-	return album;
+    return album;
 }
 
 - (void) setAlbum: (NSString *) anAlbum
 {
-	[album release];
-	album = anAlbum;
-	[album retain];
+    [album release];
+    album = anAlbum;
+    [album retain];
 }
 
 - (NSString *) path
 {
-	return path;
+    return path;
 }
 
 - (void) setPath: (NSString *) aPath
 {
-	[path release];	
-	path = aPath;
-	[path retain];
+    [path release];
+    path = aPath;
+    [path retain];
 }
 
 - (NSString *) preQueueKey
 {
-	return preQueueKey;
+    return preQueueKey;
 }
 - (void) setPreQueueKey: (NSString *) aKey
 {
-	[preQueueKey release];
-	preQueueKey = aKey;
-	[preQueueKey retain];
-	
+    [preQueueKey release];
+    preQueueKey = aKey;
+    [preQueueKey retain];
 }
 
 - (NSString *) postQueueKey
 {
-	return postQueueKey;
+    return postQueueKey;
 }
 - (void) setPostQueueKey: (NSString *) aKey
 {

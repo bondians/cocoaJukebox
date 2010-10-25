@@ -43,9 +43,6 @@
 	double fadeEndTime;
 	float myVolume;
 	float masterVolume;
-	NSTimer *fadeOutTimer;
-	NSTimer *fadeInTimer;
-	NSTimer *updateVolumeTimer;
 	//NSTimer *testTimer;
 	
 	NSUserDefaultsController *defaultsController;
@@ -98,16 +95,14 @@
 
 - (BOOL) isPlaying;
 - (BOOL) isFading;
-- (void) dumpFadeInTimer;
-- (void) dumpFadeOutTimer;
-//- (void) prepNext;
-//- (void) prepareForPlayback;
+
 
 - (BOOL) songShouldFadeIn;
 - (void) setSongShouldFadeIn: (BOOL) aBool;
 - (double) songFadeDuration;
 - (void) setSongFadeDuration: (double) duration;
 
+- (double) currentTime;
 - (double) timeLeft;
 - (double) timeToFade;
 - (double) halfTimeToFade;

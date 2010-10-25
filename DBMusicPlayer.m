@@ -329,9 +329,9 @@
 - (void) dumpOldSong
 {
 	if (currentSong) {
-		[currentSong dumpFadeInTimer];
-		[currentSong dumpFadeOutTimer];
 		[currentSong stop];
+                // ##################### why was release not here?
+                [currentSong release];
 		[self setCurrentSong: nil];
 	}
 }
@@ -348,7 +348,14 @@
 
 - (void) updateVolume
 {
+    if (currentSong)
+    {
 	[currentSong updateVolume];
+    }
+    if (nextSong)
+    {
+        [nextSong updateVolume];
+    }
 }
 
 - (float) getVolume

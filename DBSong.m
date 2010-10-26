@@ -181,11 +181,13 @@
         }
         if (fadeEndTime > 0.0 && (fadeEndTime - currentTime) < 0.1 )
         {
+        NSLog(@"posting and exiting from DBSong");
+        [myMovie stop];
             [[NSNotificationCenter defaultCenter]
             postNotificationName: kDBSongDidEndNotification
             object: self];
+        return;
         }
-        NSLog(@"about to set volume");
         NSLog(@"updating volume for: %@ from:%f to: %f",title, [myMovie volume], newVolume);
         [myMovie setVolume: newVolume];
     }

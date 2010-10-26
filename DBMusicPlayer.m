@@ -393,7 +393,7 @@
     NSLog(@"gonna try to set this song %@", [newSong title]);
         id oldSong = currentSong;
         currentSong = [newSong retain];
-        [self dumpSong: oldSong];
+        if (oldSong) [self dumpSong: oldSong];
         
         if ([currentSong loadSong])
         {

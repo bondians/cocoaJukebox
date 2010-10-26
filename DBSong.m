@@ -58,8 +58,8 @@
 
 - (BOOL) loadSong
 {
-    NSError *anError;
     NSLog(@"\n Loadsong again?\n");
+    NSError *anError;
     if (myMovie)
     {
         return (myMovie != nil);

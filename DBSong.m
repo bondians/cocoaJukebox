@@ -58,13 +58,18 @@
 
 - (BOOL) loadSong
 {
+	NSError *anError;
     NSLog(@"\n Loadsong again?\n");
-    if (myMovie) 
+    if (myMovie)
+	{
         return (myMovie != nil);
-    myMovie = [[QTMovie alloc] initWithFile: [self path] error: nil];
-    NSLog(@"did we even load this bitch?");
-    //[myMovie play];
-    //[myMovie stop];
+	}
+	if ( [QTMovie canInitWithFile: [self path]] )
+	{
+	    myMovie = [[QTMovie movieWithFile: [self path] error: &anError] retain];
+	}
+	
+	if (anError != nil) NSLog([anError localizedDescription]);
     //NSLog(@"Title: %@\n string duration: %@, string currentTime: %@",[self title], QTStringFromTime([myMovie duration]), QTStringFromTime([myMovie currentTime]));
     
     return (myMovie != nil);

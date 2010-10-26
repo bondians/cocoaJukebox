@@ -200,10 +200,10 @@
     NSLog (@"DBMusicPlayer: -playNextSong: old song dumped");
     if (nextSong){
         NSLog (@"DBMusicPlayer: -playNextSong: there was a nextSong to work with %@", [nextSong key]);
-        [self setCurrentSong: nextSong];
+        [self mySetCurrentSong: nextSong];
         [self setNextSong: nil];
     } else {
-        [self setCurrentSong: [playlist getNextSong]];
+        [self mySetCurrentSong: [playlist getNextSong]];
     }
 
     if (currentSong) {
@@ -227,7 +227,7 @@
     switch (serverIsRunning) {
         case NO:
         //  setSong nil fix
-            [self setCurrentSong: nil];
+            [self mySetCurrentSong: nil];
             [[NSNotificationCenter defaultCenter] postNotificationName: kSongDidChange object: self];
             break;
 
@@ -260,7 +260,7 @@
             
         case YES:
             serverIsRunning = NO;
-            [self setCurrentSong: nil];
+            [self mySetCurrentSong: nil];
             [[NSNotificationCenter defaultCenter] postNotificationName: kPlayerDidStop object: self];
             [[NSNotificationCenter defaultCenter] postNotificationName: kSongDidChange object: self];
             NSLog(@"toggleStartStop: Server stopped");
@@ -333,7 +333,7 @@
         [[NSNotificationCenter defaultCenter] removeObserver: self
             name:kDBSongDidEndNotification
             object: currentSong];
-        [self setCurrentSong: nil];
+        [self mySetCurrentSong: nil];
         [song autorelease];
 }
 
@@ -373,20 +373,20 @@
     return currentSong;
 }
 
-- (void) setNextSong: (DBSong *)newSong {
+- (void) mySetNextSong: (DBSong *)newSong {
     if (nextSong != newSong) {
         id oldSong = nextSong;
         nextSong = [newSong retain];
         if (oldSong) [self dumpSong: oldSong];
 
-        if (nextSong != nil && ![nextSong loadSong]) {
+        if (nextSong && ![nextSong loadSong]) {
             [self dumpSong: nextSong];
             nextSong = nil;
         }
     }
 }
 
-- (void) setCurrentSong: (DBSong *)newSong 
+- (void) mySetCurrentSong: (DBSong *)newSong 
 {
     DBSong *prospectiveSong;
     if (currentSong != newSong) 

@@ -59,8 +59,8 @@
 - (NSString *) currentSongKey;
 - (DBSong *) currentSong;
 
-- (void) setNextSong: (DBSong *) newSong;
-- (void) setCurrentSong: (DBSong *) newSong;
+- (void) mySetNextSong: (DBSong *) newSong;
+- (void) mySetCurrentSong: (DBSong *) newSong;
 
 @end
 

@@ -325,7 +325,7 @@
     }
 }
 
-- (void) dumpSong (DBSong *) song
+- (void) dumpSong: (DBSong *) song
 {
         [song stop];
         [[NSNotificationCenter defaultCenter] removeObserver: self
@@ -393,7 +393,6 @@
     {
         id oldSong = currentSong;
         currentSong = [newSong retain];
-        [[NSNotificationCenter defaultCenter] removeObserver: self name: nil object: [oldSong movie]];
         [self dumpSong: oldSong];
         
         if (currentSong != nil) 

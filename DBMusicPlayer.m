@@ -330,6 +330,12 @@
 {
     if (currentSong) {
         [currentSong stop];
+		[[NSNotificationCenter defaultCenter] removeObserver: self
+			name:QTMovieDidEndNotification 
+			object:[currentSong movie]];
+		[[NSNotificationCenter defaultCenter] removeObserver: self
+			name:kDBSongDidEndNotification
+			object: currentSong];
         [self setCurrentSong: nil];
     }
 }
@@ -346,14 +352,18 @@
 
 - (void) updateVolume
 {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     if (currentSong)
     {
-    [currentSong updateVolume];
+		[[currentSong retain] autorelease];
+		[currentSong updateVolume];
     }
     if (nextSong)
     {
+		[[nextSong retain] autorelease];
         [nextSong updateVolume];
     }
+	[pool release];
 }
 
 - (float) getVolume
@@ -370,10 +380,10 @@
     if (nextSong != newSong) {
         id oldSong = nextSong;
         nextSong = [newSong retain];
-        [oldSong release];
+        [oldSong autorelease];
 
         if (nextSong != nil && ![nextSong loadSong]) {
-            [nextSong release];
+            [nextSong autorelease];
             nextSong = nil;
         }
     }
@@ -386,19 +396,20 @@
         id oldSong = currentSong;
         currentSong = [newSong retain];
         [[NSNotificationCenter defaultCenter] removeObserver: self name: nil object: [oldSong movie]];
-        [oldSong release];
+        [oldSong autorelease];
         
         if (currentSong != nil) 
         {
             if ([currentSong loadSong])
             {
-				NSLog(@"applying for notification");
                 [[NSNotificationCenter defaultCenter] addObserver:self 
                     selector:@selector(QTMovieDidEndNotification:) 
                     name:QTMovieDidEndNotification object:[currentSong movie]];
-				NSLog(@"well that seems ok");
+                [[NSNotificationCenter defaultCenter] addObserver:self 
+					selector:@selector(QTMovieDidEndNotification:) 
+						name:kDBSongDidEndNotification object: currentSong];
             } else {
-                [currentSong release];
+                [currentSong autorelease];
                 currentSong = nil;
             }
         }

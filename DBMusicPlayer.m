@@ -59,7 +59,7 @@
     // but it still really ought to be done right.
     
     [self setPlayList: nil];
-    [self setNextSong: nil];
+    [self mySetNextSong: nil];
 
     // other things to release:
     // defaultsController // this is probably safe to release, but not necessary... it's theoretically a global
@@ -111,7 +111,7 @@
             break;
 
         case 1 :                    // Preload newSong
-            [self setNextSong: [playlist getNextSong]];
+            [self mySetNextSong: [playlist getNextSong]];
             if (!nextSong) break;
             fadeManagerState++;
             break;
@@ -201,7 +201,7 @@
     if (nextSong){
         NSLog (@"DBMusicPlayer: -playNextSong: there was a nextSong to work with %@", [nextSong key]);
         [self mySetCurrentSong: nextSong];
-        [self setNextSong: nil];
+        [self mySetNextSong: nil];
     } else {
         [self mySetCurrentSong: [playlist getNextSong]];
     }

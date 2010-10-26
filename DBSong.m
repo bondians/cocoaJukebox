@@ -158,6 +158,7 @@
 
 - (void) updateVolume
 {
+	if (! isPlaying) return;
     //NSLog(@"updateVolume entered");
     double currentTime;
     float computed;

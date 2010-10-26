@@ -227,8 +227,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -282,7 +280,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>7</integer>
+									<integer>9</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -318,12 +316,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DBMusicPlayer.m</string>
+								<string>DBSong.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -331,11 +331,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DBMusicPlayer.m</string>
+										<string>DBSong.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>416B6C37127795AB004CDABB</string>
+										<string>416B6C491277986D004CDABB</string>
 										<key>history</key>
 										<array>
 											<string>410F611708FF47C3002B050D</string>
@@ -373,10 +373,10 @@
 											<string>41D86197127552C1003A59E3</string>
 											<string>411425C1127662F2006CFDCA</string>
 											<string>411425DE12766561006CFDCA</string>
-											<string>416B6BD21277696C004CDABB</string>
 											<string>416B6C2F127794BD004CDABB</string>
 											<string>416B6C35127795AB004CDABB</string>
-											<string>416B6C36127795AB004CDABB</string>
+											<string>416B6C3A127797FC004CDABB</string>
+											<string>416B6BD21277696C004CDABB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -572,14 +572,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>416B6C31127794BD004CDABB</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>416B6B9F12773CEB004CDABB</string>
 		<string>416B6BA012773CEB004CDABB</string>
 		<string>412A308E125E8E3D00AADB80</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>/Users/cayuse/Desktop/bondiproj/cocoaJukebox/branches/cocoaJukebox/cocoaJukebox.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>178 240 1140 638 0 0 1440 878 </string>
@@ -924,7 +922,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1020, 689}}</string>
 								<key>RubberWindowFrame</key>
-								<string>277 148 1020 730 0 0 1440 878 </string>
+								<string>595 148 1020 730 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -953,7 +951,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>277 148 1020 730 0 0 1440 878 </string>
+			<string>595 148 1020 730 0 0 1440 878 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>

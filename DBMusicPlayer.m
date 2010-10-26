@@ -208,8 +208,7 @@
 
     if (currentSong) {
         if ([currentSong play]) {
-               [[NSNotificationCenter defaultCenter] postNotificationName: kSongDidChange object: self];
-
+            [[NSNotificationCenter defaultCenter] postNotificationName: kSongDidChange object: self];
             return YES;
         } else {
             return [self playNextSong];

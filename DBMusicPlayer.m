@@ -388,13 +388,14 @@
 
 - (void) setCurrentSong: (DBSong *)newSong 
 {
+    DBSong *prospectiveSong;
     if (currentSong != newSong) 
     {
     NSLog(@"gonna try to set this song %@", [newSong title]);
         id oldSong = currentSong;
         if (oldSong) [self dumpSong: oldSong];
           currentSong = nil;
-          id prospectiveSong = [newSong retain];
+          prospectiveSong = [newSong retain];
         if ([prospectiveSong loadSong]])
         {
             [[NSNotificationCenter defaultCenter] addObserver:self 

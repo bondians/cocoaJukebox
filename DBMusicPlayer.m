@@ -392,9 +392,11 @@
         {
             if ([currentSong loadSong])
             {
+				NSLog(@"applying for notification");
                 [[NSNotificationCenter defaultCenter] addObserver:self 
                     selector:@selector(QTMovieDidEndNotification:) 
                     name:QTMovieDidEndNotification object:[currentSong movie]];
+				NSLog(@"well that seems ok");
             } else {
                 [currentSong release];
                 currentSong = nil;

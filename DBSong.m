@@ -62,7 +62,7 @@
     if (myMovie) 
         return (myMovie != nil);
     myMovie = [[QTMovie alloc] initWithFile: [self path] error: nil];
-    
+    NSLog(@"did we even load this bitch?");
     //[myMovie play];
     //[myMovie stop];
     //NSLog(@"Title: %@\n string duration: %@, string currentTime: %@",[self title], QTStringFromTime([myMovie duration]), QTStringFromTime([myMovie currentTime]));
@@ -88,6 +88,7 @@
 
 - (BOOL) play
 {
+	NSLog(@"play entered");
     if (isPlaying) {
         return YES;
     }
@@ -152,6 +153,7 @@
 
 - (void) updateVolume
 {
+	NSLog(@"updateVolume entered");
     double currentTime;
     float computed;
     float newVolume = 0.0;
@@ -177,6 +179,7 @@
         {
             newVolume = computed;
         }
+		NSLog(@"about to set volume");
         NSLog(@"updating volume for: %@ from:%f to: %f",title, [myMovie volume], newVolume);
         [myMovie setVolume: newVolume];
     }

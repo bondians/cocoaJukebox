@@ -188,7 +188,7 @@
             object: self];
         return;
         }
-        NSLog(@"updating volume for: %@ from:%f to: %f",title, [myMovie volume], newVolume);
+        //NSLog(@"updating volume for: %@ from:%f to: %f",title, [myMovie volume], newVolume);
         [myMovie setVolume: newVolume];
     }
 }

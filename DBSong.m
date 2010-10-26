@@ -179,7 +179,7 @@
         {
             newVolume = computed;
         }
-        if ((fadeEndTime - currentTime) < 0.1 )
+        if (fadeEndTime > 0.0 && (fadeEndTime - currentTime) < 0.1 )
         {
             [[NSNotificationCenter defaultCenter]
             postNotificationName: kDBSongDidEndNotification

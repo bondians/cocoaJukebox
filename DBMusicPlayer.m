@@ -392,21 +392,22 @@
     {
     NSLog(@"gonna try to set this song %@", [newSong title]);
         id oldSong = currentSong;
-        currentSong = [newSong retain];
         if (oldSong) [self dumpSong: oldSong];
-        
-        if ([currentSong loadSong])
+          currentSong = nil;
+          id prospectiveSong = [newSong retain];
+        if ([prospectiveSong loadSong]])
         {
             [[NSNotificationCenter defaultCenter] addObserver:self 
                 selector:@selector(QTMovieDidEndNotification:) 
-                name:QTMovieDidEndNotification object:[currentSong movie]];
+                name:QTMovieDidEndNotification object:[prospectiveSong movie]];
             [[NSNotificationCenter defaultCenter] addObserver:self 
                 selector:@selector(QTMovieDidEndNotification:) 
-                name:kDBSongDidEndNotification object: currentSong];
+                name:kDBSongDidEndNotification object: prospectiveSong];
         } else {
-            [self dumpSong: currentSong];
-            currentSong = nil;
+            [self dumpSong: prospectiveSong];
+            prospectiveSong = nil;
         }
+        currentSong = prospectiveSong;
     }
 }
 

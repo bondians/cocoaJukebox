@@ -377,7 +377,7 @@
     if (nextSong != newSong) {
         id oldSong = nextSong;
         nextSong = [newSong retain];
-        [self dumpSong: oldSong];
+        if (oldSong) [self dumpSong: oldSong];
 
         if (nextSong != nil && ![nextSong loadSong]) {
             [self dumpSong: nextSong];
@@ -397,7 +397,6 @@
         
         if ([currentSong loadSong])
         {
-        NSLog(@"well we loaded");
             [[NSNotificationCenter defaultCenter] addObserver:self 
                 selector:@selector(QTMovieDidEndNotification:) 
                 name:QTMovieDidEndNotification object:[currentSong movie]];

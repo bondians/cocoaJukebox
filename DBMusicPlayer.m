@@ -58,7 +58,6 @@
     // this is a stub... realistically it's never needed because [DBMusicPlayer dealloc] means the app is over.
     // but it still really ought to be done right.
     
-    [self dumpOldSong];
     [self setPlayList: nil];
     [self setNextSong: nil];
 
@@ -197,12 +196,11 @@
 {
     NSLog (@"DBMusicPlayer: -playNextSong: entered");
     NSLog (@"ShouldFade= %i,DefaultFade= %f, respectIndiv= %i, AlwaysFade= %i ", songsShouldFade, defaultFadeDuration, respectIndividualFadeDurations, respectIndividualFadeIn, alwaysFadeIn);
-    [self dumpOldSong];
     fadeManagerState = 0;
     NSLog (@"DBMusicPlayer: -playNextSong: old song dumped");
     if (nextSong){
         NSLog (@"DBMusicPlayer: -playNextSong: there was a nextSong to work with %@", [nextSong key]);
-        [self setCurrentSong:nextSong];
+        [self setCurrentSong: nextSong];
         [self setNextSong: nil];
     } else {
         [self setCurrentSong: [playlist getNextSong]];
@@ -229,7 +227,8 @@
 {
     switch (serverIsRunning) {
         case NO:
-            [self dumpOldSong];
+        //  setSong nil fix
+            [self setCurrentSong: nil];
             [[NSNotificationCenter defaultCenter] postNotificationName: kSongDidChange object: self];
             break;
 
@@ -262,7 +261,7 @@
             
         case YES:
             serverIsRunning = NO;
-            [self dumpOldSong];
+            [self setCurrentSong: nil];
             [[NSNotificationCenter defaultCenter] postNotificationName: kPlayerDidStop object: self];
             [[NSNotificationCenter defaultCenter] postNotificationName: kSongDidChange object: self];
             NSLog(@"toggleStartStop: Server stopped");
@@ -326,18 +325,17 @@
     }
 }
 
-- (void) dumpOldSong
+- (void) dumpSong (DBSong *) song
 {
-    if (currentSong) {
-        [currentSong stop];
-		[[NSNotificationCenter defaultCenter] removeObserver: self
-			name:QTMovieDidEndNotification 
-			object:[currentSong movie]];
-		[[NSNotificationCenter defaultCenter] removeObserver: self
-			name:kDBSongDidEndNotification
-			object: currentSong];
+        [song stop];
+        [[NSNotificationCenter defaultCenter] removeObserver: self
+            name:QTMovieDidEndNotification 
+            object:[currentSong movie]];
+        [[NSNotificationCenter defaultCenter] removeObserver: self
+            name:kDBSongDidEndNotification
+            object: currentSong];
         [self setCurrentSong: nil];
-    }
+        [song autorelease];
 }
 
 - (BOOL) serverRunning
@@ -352,18 +350,18 @@
 
 - (void) updateVolume
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     if (currentSong)
     {
-		[[currentSong retain] autorelease];
-		[currentSong updateVolume];
+        [[currentSong retain] autorelease];
+        [currentSong updateVolume];
     }
     if (nextSong)
     {
-		[[nextSong retain] autorelease];
+        [[nextSong retain] autorelease];
         [nextSong updateVolume];
     }
-	[pool release];
+    [pool release];
 }
 
 - (float) getVolume
@@ -380,10 +378,10 @@
     if (nextSong != newSong) {
         id oldSong = nextSong;
         nextSong = [newSong retain];
-        [oldSong autorelease];
+        [self dumpSong: oldSong];
 
         if (nextSong != nil && ![nextSong loadSong]) {
-            [nextSong autorelease];
+            [self dumpSong: nextSong];
             nextSong = nil;
         }
     }
@@ -396,7 +394,7 @@
         id oldSong = currentSong;
         currentSong = [newSong retain];
         [[NSNotificationCenter defaultCenter] removeObserver: self name: nil object: [oldSong movie]];
-        [oldSong autorelease];
+        [self dumpSong: oldSong];
         
         if (currentSong != nil) 
         {
@@ -406,10 +404,10 @@
                     selector:@selector(QTMovieDidEndNotification:) 
                     name:QTMovieDidEndNotification object:[currentSong movie]];
                 [[NSNotificationCenter defaultCenter] addObserver:self 
-					selector:@selector(QTMovieDidEndNotification:) 
-						name:kDBSongDidEndNotification object: currentSong];
+                    selector:@selector(QTMovieDidEndNotification:) 
+                    name:kDBSongDidEndNotification object: currentSong];
             } else {
-                [currentSong autorelease];
+                [self dumpSong: currentSong];
                 currentSong = nil;
             }
         }

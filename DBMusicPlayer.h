@@ -47,7 +47,7 @@
 - (id) init;
 - (id) initWithPlayList: (PhantomSongQueue *) aPlayList;
 - (void) fadeManager;
-- (void) dumpOldSong;
+- (void) dumpSong: (DBSong *) song;
 - (void) toggleStartStop;
 - (void) stopWithAlert: (NSString *) reason;
 - (void) skipSong;

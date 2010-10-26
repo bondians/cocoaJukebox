@@ -153,7 +153,7 @@
 
 - (void) updateVolume
 {
-    NSLog(@"updateVolume entered");
+    //NSLog(@"updateVolume entered");
     double currentTime;
     float computed;
     float newVolume = 0.0;

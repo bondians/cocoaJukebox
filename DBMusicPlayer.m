@@ -395,20 +395,18 @@
         currentSong = [newSong retain];
         [self dumpSong: oldSong];
         
-        if (currentSong != nil) 
+        if ([currentSong loadSong])
         {
-            if ([currentSong loadSong])
-            {
-                [[NSNotificationCenter defaultCenter] addObserver:self 
-                    selector:@selector(QTMovieDidEndNotification:) 
-                    name:QTMovieDidEndNotification object:[currentSong movie]];
-                [[NSNotificationCenter defaultCenter] addObserver:self 
-                    selector:@selector(QTMovieDidEndNotification:) 
-                    name:kDBSongDidEndNotification object: currentSong];
-            } else {
-                [self dumpSong: currentSong];
-                currentSong = nil;
-            }
+        NSLog(@"well we loaded");
+            [[NSNotificationCenter defaultCenter] addObserver:self 
+                selector:@selector(QTMovieDidEndNotification:) 
+                name:QTMovieDidEndNotification object:[currentSong movie]];
+            [[NSNotificationCenter defaultCenter] addObserver:self 
+                selector:@selector(QTMovieDidEndNotification:) 
+                name:kDBSongDidEndNotification object: currentSong];
+        } else {
+            [self dumpSong: currentSong];
+            currentSong = nil;
         }
     }
 }

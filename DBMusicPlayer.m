@@ -376,10 +376,10 @@
     if (nextSong != newSong) {
         id oldSong = nextSong;
         nextSong = [newSong retain];
-        if (oldSong) [self dumpSong: oldSong];
+        [oldSong release];
 
         if (nextSong && ![nextSong loadSong]) {
-            [self dumpSong: nextSong];
+            [nextSong release];
             nextSong = nil;
         }
     }

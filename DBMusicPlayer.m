@@ -333,7 +333,6 @@
         [[NSNotificationCenter defaultCenter] removeObserver: self
             name:kDBSongDidEndNotification
             object: currentSong];
-        [self mySetCurrentSong: nil];
         [song autorelease];
 }
 

@@ -396,7 +396,7 @@
         if (oldSong) [self dumpSong: oldSong];
           currentSong = nil;
           prospectiveSong = [newSong retain];
-        if ([prospectiveSong loadSong]])
+        if ([prospectiveSong loadSong])
         {
             [[NSNotificationCenter defaultCenter] addObserver:self 
                 selector:@selector(QTMovieDidEndNotification:) 

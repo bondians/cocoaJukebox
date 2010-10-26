@@ -153,7 +153,7 @@
 
 - (void) updateVolume
 {
-	NSLog(@"updateVolume entered");
+    NSLog(@"updateVolume entered");
     double currentTime;
     float computed;
     float newVolume = 0.0;
@@ -166,7 +166,7 @@
         {
             newVolume = computed * currentTime / songFadeInDuration;
         }
-        else if (songFadeOutDuration > 0.0 && fadeEndTime > 0.0 && songFadeOutDuration >= fadeEndTime)
+        else if (songFadeOutDuration > 0.0 && fadeEndTime > 0.0 && songFadeOutDuration >= (fadeEndTime - currentTime))
         {
             newVolume = computed * (fadeEndTime - currentTime) / songFadeOutDuration;
         }
@@ -179,7 +179,13 @@
         {
             newVolume = computed;
         }
-		NSLog(@"about to set volume");
+        if ((fadeEndTime - currentTime) < 0.1 )
+        {
+            [[NSNotificationCenter defaultCenter]
+            postNotificationName: kDBSongDidEndNotification
+            object: self];
+        }
+        NSLog(@"about to set volume");
         NSLog(@"updating volume for: %@ from:%f to: %f",title, [myMovie volume], newVolume);
         [myMovie setVolume: newVolume];
     }

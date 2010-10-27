@@ -42,6 +42,8 @@
               withKeyPath: @"values.kRespectSongFadeIn" options:nil];
         [self bind: @"alwaysFadeIn" toObject: defaultsController
               withKeyPath: @"values.kSongAlwaysFadeIn" options:nil];
+        [self bind: @"masterVolume" toObject: defaultsController
+	   withKeyPath: @"values.kMasterVolume" options:nil];
         
         fadeManagerTimer = [[NSTimer scheduledTimerWithTimeInterval: 0.1
                         target: self selector: @selector(fadeManager) userInfo: nil repeats: YES] retain];
@@ -352,12 +354,12 @@
     if (currentSong)
     {
         [[currentSong retain] autorelease];
-        [currentSong updateVolume];
+        [currentSong updateVolume: masterVolume];
     }
     if (nextSong)
     {
         [[nextSong retain] autorelease];
-        [nextSong updateVolume];
+        [nextSong updateVolume: masterVolume];
     }
     [pool release];
 }

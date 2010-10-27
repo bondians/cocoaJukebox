@@ -42,7 +42,6 @@
 	double songFadeOutDuration;
 	double fadeEndTime;
 	float myVolume;
-	float masterVolume;
 	//NSTimer *testTimer;
 	
 	NSUserDefaultsController *defaultsController;
@@ -90,8 +89,7 @@
 //use these for getting and setting movie volumes, not direct movie acess
 - (float) volume;
 - (void) setVolume: (float) vol;
-- (float) computedVolume;
-- (void) updateVolume;
+- (void) updateVolume: (float) masterVolume;
 
 - (BOOL) isPlaying;
 - (BOOL) isFading;

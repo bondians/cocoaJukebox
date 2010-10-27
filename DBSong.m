@@ -32,9 +32,6 @@
         songFadeInDuration = 0.0;
         songFadeOutDuration = 0.0;
         fadeEndTime = 0.0;
-        defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
-        [self bind: @"masterVolume" toObject: defaultsController 
-       withKeyPath: @"values.kMasterVolume" options:nil];
     }
 
     return self;
@@ -156,18 +153,17 @@
     }
 }
 
-- (void) updateVolume
+- (void) updateVolume: (float) masterVolume
 {
 	if (! isPlaying) return;
     //NSLog(@"updateVolume entered");
     double currentTime;
-    float computed;
+    float computed = (myVolume * masterVolume);
     float newVolume = 0.0;
 
     if (myMovie != nil)
     {
         currentTime = [self currentTime];
-        computed = [self computedVolume];
         if (songFadeInDuration > 0.0 && currentTime <= songFadeInDuration)
         {
             newVolume = computed * currentTime / songFadeInDuration;
@@ -187,12 +183,13 @@
         }
         if (fadeEndTime > 0.0 && (fadeEndTime - currentTime) < 0.1 )
         {
-        NSLog(@"posting and exiting from DBSong");
-        [myMovie stop];
+            NSLog(@"posting and exiting from DBSong");
+            [myMovie stop];
+			isPlaying = NO;
             [[NSNotificationCenter defaultCenter]
             postNotificationName: kDBSongDidEndNotification
             object: self];
-        return;
+            return;
         }
         //NSLog(@"updating volume for: %@ from:%f to: %f",title, [myMovie volume], newVolume);
         [myMovie setVolume: newVolume];
@@ -292,10 +289,6 @@
     [postQueueKey retain];
 }
 
-- (float) computedVolume
-{
-    return (myVolume * masterVolume);
-}
 
 - (float) volume
 {

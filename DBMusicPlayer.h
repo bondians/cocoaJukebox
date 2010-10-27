@@ -29,6 +29,7 @@
 	BOOL respectIndividualFadeDurations;
 	BOOL respectIndividualFadeIn;
 	BOOL alwaysFadeIn;
+	float masterVolume;
 		
 	PhantomSongQueue *playlist;
 	DBSong *currentSong;

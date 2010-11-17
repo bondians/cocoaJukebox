@@ -24,6 +24,8 @@
 	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectSongHinting"];
 	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectSongFadeIn"];
 	[appDefaults setValue: [NSNumber numberWithBool:NO]		forKey: @"kSongAlwaysFadeIn"];
+	[appDefaults setValue: @"/Volumes/MajorTuneage/cocoaJukebox/juksite"
+															forKey: @"kPathToWebServer"];
 	//[appDefaults setValue: @"deepbondi"				forKey: @"kDefaultPlayList"];
 	[appDefaults setValue: [NSNumber numberWithBool:NO]		forKey: @"kStartPlaybackOnLaunch"];
 	//[appDefaults setValue: @"/archive/mp3.db"       forKey: @"kPathToDatabase"];
@@ -45,7 +47,23 @@
 
 - ( void ) awakeFromNib
 {
+/*	This code is left in for reference, however it doesn't work well because the
+	server it starts does not properly terminate.
+	
+	task = [[NSTask alloc] init];
+	[task setCurrentDirectoryPath: serverRoot];
+    [task setLaunchPath: [NSString stringWithFormat: @"%@/script/server", serverRoot]];
+    pipe = [[NSPipe alloc] init];
+    [task setStandardOutput: pipe];
+    file = [pipe fileHandleForReading];
+	[task launch];
+*/
+
 	[JukeboxController initialize];
+}
+-(void)applicationWillTerminate:(NSNotification *)notification {
+//	if ( task && [task isRunning])
+//		[task interrupt];
 }
 
 - (void) applicationDidFinishLaunching: (NSNotification *) aNotification

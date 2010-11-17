@@ -11,7 +11,7 @@
 #define kJookiePlayerStartStop		@"jookiePlayerStartStop"
 #define kJookiePlayerPause			@"jookiePlayerPause"
 #define kJookiePlayerSetVolume		@"jookiePlayerSetVolume"
-
+#define serverRoot					[[NSUserDefaults standardUserDefaults] stringForKey:@"kPathToWebServer"]
 
 #define notificationCenter [NSNotificationCenter defaultCenter]
 #define distributedNotificationCenter [NSDistributedNotificationCenter defaultCenter]
@@ -40,12 +40,18 @@
 	float masterVolume;
 	NSUserDefaultsController *defaultsController;
 	NSUserDefaults *myDefaults;
+	
+	// Rails Stuff
+	NSTask *task;
+	NSPipe *pipe;
+	NSFileHandle *file;
 }
 
 + (void) initialize;
 
 - (id) init;
 - (void) applicationDidFinishLaunching: (NSNotification *) aNotification;
+-(void)applicationWillTerminate:(NSNotification *)notification;
 - (IBAction) playerStartStop: (id) sender;
 - (IBAction) pause: (id) sender;
 - (IBAction) skip: (id) sender;

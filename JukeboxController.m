@@ -47,23 +47,11 @@
 
 - ( void ) awakeFromNib
 {
-/*	This code is left in for reference, however it doesn't work well because the
-	server it starts does not properly terminate.
-	
-	task = [[NSTask alloc] init];
-	[task setCurrentDirectoryPath: serverRoot];
-    [task setLaunchPath: [NSString stringWithFormat: @"%@/script/server", serverRoot]];
-    pipe = [[NSPipe alloc] init];
-    [task setStandardOutput: pipe];
-    file = [pipe fileHandleForReading];
-	[task launch];
-*/
-
 	[JukeboxController initialize];
 }
 -(void)applicationWillTerminate:(NSNotification *)notification {
-//	if ( task && [task isRunning])
-//		[task interrupt];
+	if ( task && [task isRunning])
+		[task interrupt];
 }
 
 - (void) applicationDidFinishLaunching: (NSNotification *) aNotification
@@ -87,9 +75,44 @@
 	[self playerStartStop];
 }
 
+-(IBAction) webServerStartStop: (id) sender
+{
+	[self webServerStartStop];
+}
+
 - (void) playerStartStop
 {
-	[myMusicPlayer toggleStartStop];
+	if (task)
+	{
+		[myMusicPlayer toggleStartStop];
+	} else {
+		NSAlert *myAlert = [[[NSAlert alloc] init] autorelease];
+		[myAlert setMessageText: @"Webserver is Not Running."];
+		[myAlert setInformativeText: @"Please start the Web Server in preferences pane."];
+		[myAlert runModal];
+	}
+}
+
+- (void) webServerStartStop
+{
+	if ( task && [task isRunning]){
+		[task interrupt];
+		[task release];
+		[pipe release];
+		[file release];
+		task = nil;
+		pipe = nil;
+		file = nil;
+	} else {
+		task = [[NSTask alloc] init];
+		[task setCurrentDirectoryPath: serverRoot];
+		[task setLaunchPath: [NSString stringWithFormat: @"%@/script/server", serverRoot]];
+		pipe = [[NSPipe alloc] init];
+		[task setStandardOutput: pipe];
+		file = [pipe fileHandleForReading];
+		[task launch];
+	}
+	
 }
 
 - (IBAction) skip: (id) sender

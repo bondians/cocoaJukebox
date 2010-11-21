@@ -28,6 +28,7 @@
 	DBMusicPlayer *myMusicPlayer;
 	IBOutlet NSTextField *requestNumber;
 	IBOutlet NSButton *startStop;
+	IBOutlet NSButton *webServerStartStop;
 	IBOutlet NSButton *pauseResume;
 	IBOutlet NSButton *additive;
 	IBOutlet NSProgressIndicator *playListLoader;
@@ -53,6 +54,7 @@
 - (void) applicationDidFinishLaunching: (NSNotification *) aNotification;
 -(void)applicationWillTerminate:(NSNotification *)notification;
 - (IBAction) playerStartStop: (id) sender;
+- (IBAction) webServerStartStop: (id) sender;
 - (IBAction) pause: (id) sender;
 - (IBAction) skip: (id) sender;
 - (IBAction) showPreferences: (id) sender;
@@ -69,6 +71,7 @@
 
 - (void) skipCurrentSong;
 - (void) playerStartStop;
+- (void) webServerStartStop;
 - (void) playerPause;
 
 @end

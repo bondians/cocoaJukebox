@@ -227,6 +227,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -280,13 +282,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>2</integer>
-									<integer>1</integer>
-									<integer>0</integer>
+									<integer>47</integer>
+									<integer>46</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 4}, {250, 579}}</string>
+							<string>{{0, 254}, {250, 579}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -316,8 +317,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -335,7 +334,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4154D5BB1289F5240038B4C3</string>
+										<string>411804451299C9580033E1CA</string>
 										<key>history</key>
 										<array>
 											<string>410F611708FF47C3002B050D</string>
@@ -376,7 +375,7 @@
 											<string>419DB05E1289EF3400CE6600</string>
 											<string>419DB05F1289EF3400CE6600</string>
 											<string>419DB0701289F04500CE6600</string>
-											<string>419DB0761289F29E00CE6600</string>
+											<string>4154D5BB1289F5240038B4C3</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -434,9 +433,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>4154D5BC1289F5240038B4C3</string>
+				<string>411804461299C9580033E1CA</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>4154D5BD1289F5240038B4C3</string>
+				<string>411804471299C9580033E1CA</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -572,7 +571,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>412A308E125E8E3D00AADB80</string>
 		<string>/Users/cayuse/Desktop/bondiproj/cocoaJukebox/branches/cocoaJukebox/cocoaJukebox.xcodeproj</string>
 	</array>
@@ -654,7 +652,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>412A308E125E8E3D00AADB80</string>
-				<string>4154D5BE1289F5240038B4C3</string>
+				<string>411804481299C9580033E1CA</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

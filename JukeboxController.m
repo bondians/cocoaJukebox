@@ -103,13 +103,15 @@
 		task = nil;
 		pipe = nil;
 		file = nil;
+		[webServerStartStop setTitle: @"Start Web Server"];
 	} else {
+		[webServerStartStop setTitle: @"Stop Web Server"];
 		task = [[NSTask alloc] init];
 		[task setCurrentDirectoryPath: serverRoot];
 		[task setLaunchPath: [NSString stringWithFormat: @"%@/script/server", serverRoot]];
 		pipe = [[NSPipe alloc] init];
 		[task setStandardOutput: pipe];
-		file = [pipe fileHandleForReading];
+		file = [[pipe fileHandleForReading] retain];
 		[task launch];
 	}
 	

@@ -1,5 +1,7 @@
 #import "JukeboxController.h"
 #import "PhantomSongQueue.h"
+#include <sys/types.h>
+#include "/Developer/SDKs/MacOSX10.4u.sdk/usr/include/unistd.h"
 
 @implementation JukeboxController
 
@@ -98,21 +100,27 @@
 	if ( task && [task isRunning]){
 		[task interrupt];
 		[task release];
-		[pipe release];
-		[file release];
 		task = nil;
-		pipe = nil;
-		file = nil;
 		[webServerStartStop setTitle: @"Start Web Server"];
 	} else {
+		pid_t group = setsid();
+		NSLog ([NSString stringWithFormat: @"group was %i after setsid", group]);
+
+			if (group < 0) 
+				group = getpgid(0);
+		NSLog ([NSString stringWithFormat: @"group was %i", group]);
 		[webServerStartStop setTitle: @"Stop Web Server"];
 		task = [[NSTask alloc] init];
 		[task setCurrentDirectoryPath: serverRoot];
 		[task setLaunchPath: [NSString stringWithFormat: @"%@/script/server", serverRoot]];
-		pipe = [[NSPipe alloc] init];
-		[task setStandardOutput: pipe];
-		file = [[pipe fileHandleForReading] retain];
+		//[task setArguments: [NSArray arrayWithObjects: @"webrick", nil]];
 		[task launch];
+		usleep(3500000);
+		pid_t procGroup = getpgid([task processIdentifier]);
+		NSLog ([NSString stringWithFormat: @"proc group was %i", procGroup]);
+		setpgid([task processIdentifier], group);
+		procGroup = getpgid([task processIdentifier]);
+		
 	}
 	
 }

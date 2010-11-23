@@ -44,8 +44,8 @@
 	
 	// Rails Stuff
 	NSTask *task;
-	NSPipe *pipe;
-	NSFileHandle *file;
+	//NSPipe *pipe;
+	//NSFileHandle *file;
 }
 
 + (void) initialize;

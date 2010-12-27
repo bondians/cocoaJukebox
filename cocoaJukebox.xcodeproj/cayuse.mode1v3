@@ -306,7 +306,7 @@
 							<real>250</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>137 99 1290 760 0 0 1440 878 </string>
+						<string>100 118 1290 760 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -336,7 +336,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>410ADC54129B590000F96204</string>
+										<string>410ADC55129B660F00F96204</string>
 										<key>history</key>
 										<array>
 											<string>410F611708FF47C3002B050D</string>
@@ -391,7 +391,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1018, 712}}</string>
 								<key>RubberWindowFrame</key>
-								<string>137 99 1290 760 0 0 1440 878 </string>
+								<string>100 118 1290 760 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -411,7 +411,7 @@
 								<key>Frame</key>
 								<string>{{0, 717}, {1018, 2}}</string>
 								<key>RubberWindowFrame</key>
-								<string>137 99 1290 760 0 0 1440 878 </string>
+								<string>100 118 1290 760 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -582,7 +582,7 @@
 		<string>/Users/cayuse/Desktop/bondiproj/cocoaJukebox/branches/cocoaJukebox/cocoaJukebox.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>137 99 1290 760 0 0 1440 878 </string>
+	<string>100 118 1290 760 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

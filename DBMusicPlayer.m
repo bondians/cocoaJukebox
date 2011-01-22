@@ -348,6 +348,12 @@
     [[currentSong movie] setVolume: volume];
 }
 
+- (void) setCurrentTime: (double) someTime
+{
+	QTTime aTime = QTMakeTimeWithTimeInterval(someTime);
+	[[currentSong movie] setCurrentTime:aTime];	
+}
+
 - (void) updateVolume
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];

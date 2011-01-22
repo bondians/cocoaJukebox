@@ -125,6 +125,11 @@
 	
 }
 
+- (IBAction)setTrackPosition:(id)sender
+{
+	[myMusicPlayer setCurrentTime: [sender doubleValue]];
+}
+
 - (IBAction) skip: (id) sender
 {
 	[self skipCurrentSong];
@@ -201,6 +206,8 @@
 		[songNameDisplay setStringValue: [[myMusicPlayer currentSong] title]];
 		[songArtistDisplay setStringValue: [[myMusicPlayer currentSong] artist]];
 		[songTimeDisplay setStringValue: [JukeboxController doubleToTime: playTime]];
+		[songSlider setMaxValue: playTime];
+		[songSlider setMinValue: QTZeroTime.timeValue];
 	}
 	else {
 		[dbKeyDisplay setStringValue: @"000000"];
@@ -223,6 +230,8 @@
 			QTGetTimeInterval([[[myMusicPlayer currentSong] movie] currentTime], &currentTime);
 			QTGetTimeInterval([[[myMusicPlayer currentSong] movie] duration], &playTime);
 			[songTimeDisplay setStringValue: [JukeboxController doubleToTime: playTime - currentTime]];
+			[songSlider setDoubleValue: currentTime];
+			NSLog(@"current time %f", currentTime);
 		}
 }
 

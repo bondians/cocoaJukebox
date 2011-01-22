@@ -54,6 +54,7 @@
 - (void) skipSong;
 - (void) pauseSong;
 - (void) setVolume: (float) volume;
+- (void) setCurrentTime: (double) someTime;
 - (float) getVolume;
 - (void) updateVolume;
 - (BOOL) serverRunning;

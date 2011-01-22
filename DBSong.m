@@ -192,6 +192,7 @@
             return;
         }
         //NSLog(@"updating volume for: %@ from:%f to: %f",title, [myMovie volume], newVolume);
+		newVolume = newVolume < 1.0 ? newVolume : 1.0; // sanity check.. because inSanity was possible.. believe me.
         [myMovie setVolume: newVolume];
     }
 }

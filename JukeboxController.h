@@ -31,6 +31,7 @@
 	IBOutlet NSButton *webServerStartStop;
 	IBOutlet NSButton *pauseResume;
 	IBOutlet NSButton *additive;
+	IBOutlet NSSlider *songSlider;
 	IBOutlet NSProgressIndicator *playListLoader;
     IBOutlet NSTextField *songArtistDisplay;
     IBOutlet NSTextField *songNameDisplay;
@@ -39,6 +40,7 @@
 	IBOutlet UKPrefsPanel *prefsPanel;
 	NSTimer *durationTimer;
 	float masterVolume;
+	double maxTimeScale;
 	NSUserDefaultsController *defaultsController;
 	NSUserDefaults *myDefaults;
 	
@@ -52,12 +54,14 @@
 
 - (id) init;
 - (void) applicationDidFinishLaunching: (NSNotification *) aNotification;
--(void)applicationWillTerminate:(NSNotification *)notification;
+- (void)applicationWillTerminate:(NSNotification *)notification;
 - (IBAction) playerStartStop: (id) sender;
 - (IBAction) webServerStartStop: (id) sender;
 - (IBAction) pause: (id) sender;
 - (IBAction) skip: (id) sender;
 - (IBAction) showPreferences: (id) sender;
+
+- (IBAction) setTrackPosition:(id)sender;
 
 - (void) playerDidPause: (NSNotification *) aNotification;
 - (void) playerDidResumeFromPause: (NSNotification *) aNotification;

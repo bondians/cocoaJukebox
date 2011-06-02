@@ -336,7 +336,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4194896012EB91B0006B89FF</string>
+										<string>41F430791397518300FFC31F</string>
 										<key>history</key>
 										<array>
 											<string>410F611708FF47C3002B050D</string>
@@ -377,7 +377,7 @@
 											<string>4194892712EB8C2C006B89FF</string>
 											<string>4194893A12EB8E2A006B89FF</string>
 											<string>4194895A12EB91A1006B89FF</string>
-											<string>4194895B12EB91A1006B89FF</string>
+											<string>4194896012EB91B0006B89FF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -435,9 +435,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>4194883C12EB6B8F006B89FF</string>
+				<string>41F430761397508500FFC31F</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>4194883D12EB6B8F006B89FF</string>
+				<string>41F430771397508500FFC31F</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -573,13 +573,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>4194887312EB7BD5006B89FF</string>
-		<string>4194887412EB7BD5006B89FF</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>/Users/cayuse/Desktop/bondiproj/cocoaJukebox/branches/cocoaJukebox/cocoaJukebox.xcodeproj</string>
 		<string>412A308E125E8E3D00AADB80</string>
+		<string>/Users/cayuse/Desktop/bondiproj/cocoaJukebox/branches/cocoaJukebox/cocoaJukebox.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>117 118 1290 760 0 0 1440 878 </string>
@@ -598,14 +593,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DBMusicPlayer.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -661,7 +654,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>412A308E125E8E3D00AADB80</string>
-				<string>4194883E12EB6B8F006B89FF</string>
+				<string>41F430781397508600FFC31F</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -674,7 +667,7 @@
 			<key>WindowToolGUID</key>
 			<string>412A308E125E8E3D00AADB80</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

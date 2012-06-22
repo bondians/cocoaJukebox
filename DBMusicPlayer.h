@@ -30,11 +30,14 @@
 	BOOL respectIndividualFadeIn;
 	BOOL alwaysFadeIn;
 	float masterVolume;
-		
+	
 	PhantomSongQueue *playlist;
 	DBSong *currentSong;
 	DBSong *nextSong;
 	
+	NSUserDefaultsController *defaultsController;
+	NSUserDefaults *defaults;
+
 	NSTimer *fadeManagerTimer;
 	NSTimer *updateVolumeTimer;
 	

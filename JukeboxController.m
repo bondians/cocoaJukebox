@@ -22,6 +22,7 @@
 	[appDefaults setValue: @"1.0"							forKey: @"kMasterVolume"];
 	[appDefaults setValue: @"1.0"							forKey: @"kMaxMasterVolume"];
 	[appDefaults setValue: @"0.0"							forKey: @"kMinMasterVolume"];
+	//[appDefaults setValue: @"--"							forKey: @"kCurrentSong"];
 	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectIndividualFadeDurations"];
 	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectSongHinting"];
 	[appDefaults setValue: [NSNumber numberWithBool:YES]	forKey: @"kRespectSongFadeIn"];
@@ -43,6 +44,8 @@
 		defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 		[self bind: @"masterVolume" toObject: defaultsController 
 	   withKeyPath: @"values.kMasterVolume" options:nil];
+		[[defaultsController values] setValue:@"--"
+									   forKey:@"kCurrentSong"];
 	}
 	return self;
 }
@@ -84,15 +87,17 @@
 
 - (void) playerStartStop
 {
-	if (task)
-	{
+	//if (task)
+	//{
 		[myMusicPlayer toggleStartStop];
-	} else {
+	/*
+	 } else {
 		NSAlert *myAlert = [[[NSAlert alloc] init] autorelease];
 		[myAlert setMessageText: @"Webserver is Not Running."];
 		[myAlert setInformativeText: @"Please start the Web Server in preferences pane."];
 		[myAlert runModal];
 	}
+	 */
 }
 
 - (void) webServerStartStop

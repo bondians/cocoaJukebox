@@ -30,7 +30,8 @@
         nextSong = nil;
         playlist = nil;
 
-        NSUserDefaultsController *defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
+		defaults = [NSUserDefaults standardUserDefaults];
+		defaultsController = [NSUserDefaultsController sharedUserDefaultsController];
         
         [self bind: @"songsShouldFade" toObject: defaultsController 
               withKeyPath: @"values.kFadeIsOn" options:nil];
@@ -416,6 +417,10 @@
             prospectiveSong = nil;
         }
         currentSong = prospectiveSong;
+		[[defaultsController values] setValue:[currentSong title]
+										  forKey:@"kCurrentSong"];
+		[defaults synchronize];
+		
     }
 }
 
